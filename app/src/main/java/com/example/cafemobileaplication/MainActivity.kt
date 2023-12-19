@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
             else if( result == -2)
                 message.text = "Error Cannot Open/Create DataBase"
             else message.text = "You logged in successfully"
+            val intent = Intent(this, MainActivityMenu::class.java)
+            startActivity(intent)
         }
     }
 

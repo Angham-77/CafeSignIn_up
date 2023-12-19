@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">CafeMobileAplication</string>
+
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="menu_ek3_string">Menu</string>
+    <string name="tea_string">tea</string>
+    <string name="coffee_string">coffee</string>
+    <string name="cake_string">cake</string>
+    <string name="grey_tea_string">Grey Tea</string>
+    <string name="a_chinese_black_tea_string">A Chinese black tea </string>
+    <string name="__2_45_string">2.45</string>
+    <string name="add_string">Add</string>
+    <string name="__2_45_ek1_string">3.45</string>
+    <string name="add_ek1_string">Add</string>
+    <string name="a_refreshing_apple_iced_tea_string">A refreshing Apple iced tea</string>
+    <string name="apple_iced_tea_string">Apple iced tea</string>
+    <string name="grey_tea_ek1_string">English tea</string>
+    <string name="__2_45_ek2_string">2.70</string>
+    <string name="add_ek2_string">Add</string>
+    <string name="a_bold_and_full_bodied_tea_string">A bold and full bodied tea</string>
+    <string name="grey_tea_ek2_string">Green tea</string>
+    <string name="a_chinese_black_tea_ek1_string">Dried green tea</string>
+    <string name="__2_45_ek3_string">2.45</string>
+    <string name="add_ek3_string">Add</string>
 </resources>

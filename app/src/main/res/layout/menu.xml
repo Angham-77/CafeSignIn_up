@@ -1,0 +1,474 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent" android:layout_height="wrap_content" >
+	<!-- 
+	/*
+	 *	This content is generated from the API File Info.
+	 *	(Alt+Shift+Ctrl+I).
+	 *
+	 *	@desc 		
+	 *	@file 		menu
+	 *	@date 		Monday 18th of December 2023 04:25:47 PM
+	 *	@title 		Page 1
+	 *	@author 	
+	 *	@keywords 	
+	 *	@generator 	Export Kit v1.3.figma
+	 *
+	 */
+	-->
+	<ScrollView android:id="@+id/menu" 
+		android:layout_width="wrap_content" 
+		android:layout_height="match_parent" >
+
+		<RelativeLayout android:id="@+id/content_container" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" >
+
+
+
+			<RelativeLayout android:id="@+id/page_menu_ek1"
+				android:layout_marginTop="0dp"
+				android:layout_marginStart="0dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+				<View   android:id="@+id/_bg__menu_ek2"
+					android:background="@drawable/_bg__menu_ek2_shape"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="370dp"
+					android:layout_height="740dp" />
+
+
+				<RelativeLayout android:id="@+id/menu_container"
+					android:layout_marginTop="0dp"
+					android:layout_marginStart="0dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					>
+
+					<View   android:id="@+id/_bg__menu_container"
+						android:background="@drawable/_bg__menu_container_shape"
+						 android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:layout_width="370dp"
+						android:layout_height="740dp" />
+
+					<TextView android:id="@+id/menu_ek3"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="20sp"
+						android:textColor="@color/menu_ek3_color"
+						android:layout_marginLeft="131dp"
+						android:layout_marginTop="58dp"
+						android:layout_width="100dp"
+						android:layout_height="33dp"
+						android:text="@string/menu_ek3_string"
+						 />
+
+					<View
+						android:id="@+id/rectangle_3"
+						android:layout_width="86dp"
+						android:layout_height="70dp"
+						android:layout_marginStart="27dp"
+						android:layout_marginTop="108dp"
+						android:background="@drawable/rectangle_4_shape" />
+
+					<View   android:id="@+id/rectangle_4"
+						android:background="@drawable/rectangle_4_shape"
+						 android:layout_marginStart="133dp"
+						android:layout_marginTop="108dp"
+						android:layout_width="86dp"
+						android:layout_height="70dp" />
+
+					<View
+						android:id="@+id/rectangle_5"
+						android:layout_width="86dp"
+						android:layout_height="70dp"
+						android:layout_marginStart="239dp"
+						android:layout_marginTop="108dp"
+						android:background="@drawable/rectangle_4_shape" />
+
+					<ImageView android:id="@+id/teapot_1"
+						android:src="@drawable/teapot_1"
+						android:contentDescription="teapot_1"
+						 android:layout_marginStart="46dp"
+						android:layout_marginTop="116dp"
+						android:layout_width="50dp"
+						android:layout_height="38dp" />
+
+					<TextView android:id="@+id/tea"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="15sp"
+						android:textColor="@color/menu_ek3_color"
+						android:layout_marginLeft="45dp"
+						android:layout_marginTop="149dp"
+						android:layout_width="55dp"
+						android:layout_height="20.5dp"
+						android:text="@string/tea_string"
+						 />
+
+					<ImageView android:id="@+id/coffee_cup_1"
+						android:src="@drawable/coffee_cup_1"
+						android:contentDescription="coffee_cup_1"
+						 android:layout_marginStart="155dp"
+						android:layout_marginTop="109dp"
+						android:layout_width="44dp"
+						android:layout_height="45dp" />
+
+					<TextView android:id="@+id/coffee"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="15sp"
+						android:textColor="@color/menu_ek3_color"
+						android:layout_marginLeft="154dp"
+						android:layout_marginTop="155dp"
+						android:layout_width="48dp"
+						android:layout_height="22.5dp"
+						android:text="@string/coffee_string"
+						 />
+
+					<ImageView android:id="@+id/cake_1"
+						android:src="@drawable/cake_1"
+						android:contentDescription="cake_1"
+						 android:layout_marginStart="262dp"
+						android:layout_marginTop="116dp"
+						android:layout_width="43dp"
+						android:layout_height="43dp" />
+
+					<TextView android:id="@+id/cake"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="15sp"
+						android:textColor="@color/menu_ek3_color"
+						android:layout_marginLeft="265dp"
+						android:layout_marginTop="155dp"
+						android:layout_width="37dp"
+						android:layout_height="22.5dp"
+						android:text="@string/cake_string"
+						 />
+
+
+					<RelativeLayout android:id="@+id/component_1"
+						android:layout_marginTop="234dp"
+						android:layout_marginStart="29dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						>
+
+						<View
+							android:id="@+id/_bg__component_1_ek1"
+							android:layout_width="291dp"
+							android:layout_height="70dp"
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp" />
+
+						<View   android:id="@+id/rectangle_6"
+							android:background="@drawable/rectangle_6_shape"
+							 android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="86dp"
+							android:layout_height="70dp" />
+
+						<TextView android:id="@+id/grey_tea"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="88.4dp"
+							android:layout_height="23.4dp"
+							android:text="@string/grey_tea_string"
+							 />
+
+						<TextView android:id="@+id/a_chinese_black_tea"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="21dp"
+							android:layout_width="164.4dp"
+							android:layout_height="22.4dp"
+							android:text="@string/a_chinese_black_tea_string"
+							 />
+
+						<TextView android:id="@+id/__2_45"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="41dp"
+							android:layout_width="49.4dp"
+							android:layout_height="19.4dp"
+							android:text="@string/__2_45_string"
+							 />
+
+						<ImageView android:id="@+id/earl_grey__1__1"
+							android:src="@drawable/earl_grey__1__1"
+							android:contentDescription="earl_grey__1__1"
+							 android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="86dp"
+							android:layout_height="70dp" />
+
+						<View   android:id="@+id/rectangle_10"
+							android:background="@drawable/rectangle_10_shape"
+							 android:layout_marginStart="243dp"
+							android:layout_marginTop="40dp"
+							android:layout_width="47dp"
+							android:layout_height="23dp" />
+
+						<TextView android:id="@+id/add"
+							android:textSize="12sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="256dp"
+							android:layout_marginTop="43dp"
+							android:layout_width="42.2dp"
+							android:layout_height="16.2dp"
+							android:text="@string/add_string"
+							 />
+
+					</RelativeLayout>
+
+
+					<RelativeLayout android:id="@+id/component_4"
+						android:layout_marginTop="579dp"
+						android:layout_marginStart="32dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						>
+
+						<View
+							android:id="@+id/_bg__component_4_ek1"
+							android:layout_width="291dp"
+							android:layout_height="70dp"
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp" />
+
+						<View   android:id="@+id/rectangle_6_ek1"
+							android:background="@drawable/rectangle_6_ek1_shape"
+							 android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="86dp"
+							android:layout_height="70dp" />
+
+						<TextView android:id="@+id/__2_45_ek1"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="41dp"
+							android:layout_width="49.4dp"
+							android:layout_height="19.4dp"
+							android:text="@string/__2_45_ek1_string"
+							 />
+
+						<View   android:id="@+id/rectangle_10_ek1"
+							android:background="@drawable/rectangle_10_ek1_shape"
+							 android:layout_marginStart="243dp"
+							android:layout_marginTop="40dp"
+							android:layout_width="47dp"
+							android:layout_height="23dp" />
+
+						<TextView android:id="@+id/add_ek1"
+							android:textSize="12sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="256dp"
+							android:layout_marginTop="43dp"
+							android:layout_width="42.2dp"
+							android:layout_height="16.2dp"
+							android:text="@string/add_ek1_string"
+							 />
+
+					</RelativeLayout>
+
+					<TextView android:id="@+id/a_refreshing_apple_iced_tea"
+						android:textSize="14sp"
+						android:textColor="@color/menu_ek3_color"
+						android:layout_marginLeft="137dp"
+						android:layout_marginTop="596dp"
+						android:layout_width="188.4dp"
+						android:layout_height="22.4dp"
+						android:text="@string/a_refreshing_apple_iced_tea_string"
+						 />
+
+					<TextView android:id="@+id/apple_iced_tea"
+						android:textSize="14sp"
+						android:textColor="@color/menu_ek3_color"
+						android:layout_marginLeft="137dp"
+						android:layout_marginTop="579dp"
+						android:layout_width="154.4dp"
+						android:layout_height="25.4dp"
+						android:text="@string/apple_iced_tea_string"
+						 />
+
+
+					<RelativeLayout android:id="@+id/component_3"
+						android:layout_marginTop="464dp"
+						android:layout_marginStart="29dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						>
+
+						<View
+							android:id="@+id/_bg__component_3_ek1"
+							android:layout_width="291dp"
+							android:layout_height="70dp"
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp" />
+
+						<View   android:id="@+id/rectangle_6_ek2"
+							android:background="@drawable/rectangle_6_ek2_shape"
+							 android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="86dp"
+							android:layout_height="70dp" />
+
+						<TextView android:id="@+id/grey_tea_ek1"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="88.4dp"
+							android:layout_height="23.4dp"
+							android:text="@string/grey_tea_ek1_string"
+							 />
+
+						<TextView android:id="@+id/__2_45_ek2"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="41dp"
+							android:layout_width="49.4dp"
+							android:layout_height="19.4dp"
+							android:text="@string/__2_45_ek2_string"
+							 />
+
+						<View   android:id="@+id/rectangle_10_ek2"
+							android:background="@drawable/rectangle_10_ek2_shape"
+							 android:layout_marginStart="243dp"
+							android:layout_marginTop="40dp"
+							android:layout_width="47dp"
+							android:layout_height="23dp" />
+
+						<TextView android:id="@+id/add_ek2"
+							android:textSize="12sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="256dp"
+							android:layout_marginTop="43dp"
+							android:layout_width="42.2dp"
+							android:layout_height="16.2dp"
+							android:text="@string/add_ek2_string"
+							 />
+
+					</RelativeLayout>
+
+					<TextView android:id="@+id/a_bold_and_full_bodied_tea"
+						android:textSize="14sp"
+						android:textColor="@color/menu_ek3_color"
+						android:layout_marginLeft="134dp"
+						android:layout_marginTop="483dp"
+						android:layout_width="188.4dp"
+						android:layout_height="22.4dp"
+						android:text="@string/a_bold_and_full_bodied_tea_string"
+						 />
+
+
+					<RelativeLayout android:id="@+id/component_2"
+						android:layout_marginTop="349dp"
+						android:layout_marginStart="29dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						>
+
+						<View
+							android:id="@+id/_bg__component_2_ek1"
+							android:layout_width="291dp"
+							android:layout_height="70dp"
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp" />
+
+						<View   android:id="@+id/rectangle_6_ek3"
+							android:background="@drawable/rectangle_6_ek3_shape"
+							 android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="86dp"
+							android:layout_height="70dp" />
+
+						<TextView android:id="@+id/grey_tea_ek2"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="88.4dp"
+							android:layout_height="23.4dp"
+							android:text="@string/grey_tea_ek2_string"
+							 />
+
+						<TextView android:id="@+id/a_chinese_black_tea_ek1"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="21dp"
+							android:layout_width="164.4dp"
+							android:layout_height="22.4dp"
+							android:text="@string/a_chinese_black_tea_ek1_string"
+							 />
+
+						<TextView android:id="@+id/__2_45_ek3"
+							android:textSize="14sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="105dp"
+							android:layout_marginTop="41dp"
+							android:layout_width="49.4dp"
+							android:layout_height="19.4dp"
+							android:text="@string/__2_45_ek3_string"
+							 />
+
+						<View   android:id="@+id/rectangle_10_ek3"
+							android:background="@drawable/rectangle_10_ek3_shape"
+							 android:layout_marginStart="243dp"
+							android:layout_marginTop="40dp"
+							android:layout_width="47dp"
+							android:layout_height="23dp" />
+
+						<TextView android:id="@+id/add_ek3"
+							android:textSize="12sp"
+							android:textColor="@color/menu_ek3_color"
+							android:layout_marginLeft="256dp"
+							android:layout_marginTop="43dp"
+							android:layout_width="42.2dp"
+							android:layout_height="16.2dp"
+							android:text="@string/add_ek3_string"
+							 />
+
+					</RelativeLayout>
+
+					<ImageView android:id="@+id/green_tea_fuze_logo_1"
+						android:src="@drawable/green_tea_fuze_logo_1"
+						android:contentDescription="green_tea_fuze_logo_1"
+						 android:layout_marginStart="29dp"
+						android:layout_marginTop="349dp"
+						android:layout_width="86dp"
+						android:layout_height="70dp" />
+
+					<ImageView android:id="@+id/english_breakfast_tea_product__1__1"
+						android:src="@drawable/english_breakfast_tea_product__1__1"
+						android:contentDescription="english_breakfast_tea_product__1__1"
+						 android:layout_marginStart="29dp"
+						android:layout_marginTop="464dp"
+						android:layout_width="86dp"
+						android:layout_height="70dp" />
+
+					<ImageView android:id="@+id/rhubarb_apple_refresher_1"
+						android:src="@drawable/rhubarb_apple_refresher_1"
+						android:contentDescription="rhubarb_apple_refresher_1"
+						 android:layout_marginStart="32dp"
+						android:layout_marginTop="579dp"
+						android:layout_width="86dp"
+						android:layout_height="70dp" />
+
+				</RelativeLayout>
+
+			</RelativeLayout>
+		</RelativeLayout>
+
+	</ScrollView>
+</HorizontalScrollView>
