@@ -92,6 +92,7 @@
 					<ImageView android:id="@+id/teapot_1"
 						android:src="@drawable/teapot_1"
 						android:contentDescription="teapot_1"
+						android:onClick="taeButton"
 						 android:layout_marginStart="46dp"
 						android:layout_marginTop="116dp"
 						android:layout_width="50dp"

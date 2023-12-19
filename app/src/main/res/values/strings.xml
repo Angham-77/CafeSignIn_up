@@ -22,4 +22,22 @@
     <string name="a_chinese_black_tea_ek1_string">Dried green tea</string>
     <string name="__2_45_ek3_string">2.45</string>
     <string name="add_ek3_string">Add</string>
+    <string name="Cortado_1">Cortado</string>
+    <string name="milk_and_espresso">Milk and espresso</string>
+    <string name="Cortado_price">2.45</string>
+    <string name="Cortado_add">Add</string>
+    <string name="Latte1">Latte</string>
+    <string name="latte_desc">Foamed classic iced coffee</string>
+    <string name="Latte_price">2.70</string>
+    <string name="Latte_add">Add</string>
+    <string name="iced_coffee">Iced Coffee</string>
+    <string name="iced_coffee_desc">espresso and milk and ice</string>
+    <string name="iced_coffee_price">3.20</string>
+    <string name="iced_coffee_add">Add</string>
+    <string name="iced_americano">Iced Americano</string>
+    <string name="iced_americano_desc">Two shots espresso and ice</string>
+    <string name="iced_americano_price">2.45</string>
+    <string name="iced_americano_add">Add</string>
+
+
 </resources>
