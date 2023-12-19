@@ -13,4 +13,9 @@ class MainActivityMenu : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.menu)
     }
+    fun taeButton(view: View) {
+
+        val intent = Intent(this, MainActivityCoffeeMenu::class.java)
+        startActivity(intent)
+    }
 }
