@@ -68,14 +68,12 @@
                         android:layout_marginTop="108dp"
                         android:background="@drawable/rectangle_4_shape" />
 
-                    <View
-                        android:id="@+id/rectangle_4"
-                        android:layout_width="86dp"
-                        android:layout_height="70dp"
+                    <View   android:id="@+id/rectangle_4"
+                        android:background="@drawable/rectangle_4_shape"
                         android:layout_marginStart="133dp"
                         android:layout_marginTop="108dp"
-                        android:background="@drawable/rectangle_4_shape"
-                        android:backgroundTint="#E6B6B6" />
+                        android:layout_width="86dp"
+                        android:layout_height="70dp" />
 
                     <View
                         android:id="@+id/rectangle_5"
@@ -83,17 +81,19 @@
                         android:layout_height="70dp"
                         android:layout_marginStart="239dp"
                         android:layout_marginTop="108dp"
-                        android:background="@drawable/rectangle_4_shape" />
+                        android:background="@drawable/rectangle_4_shape"
+                        android:backgroundTint="#E6B6B6" />
 
-                    <ImageView android:id="@+id/teapot_2"
-                        android:src="@drawable/teapot_1"
+                    <ImageView
+                        android:id="@+id/teapot_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="46dp"
+                        android:layout_marginTop="116dp"
                         android:contentDescription="teapot_1"
                         android:onClick="teaButton"
                         android:background="@drawable/button_background_selector"
-                        android:layout_marginStart="46dp"
-                        android:layout_marginTop="116dp"
-                        android:layout_width="50dp"
-                        android:layout_height="38dp" />
+                        android:src="@drawable/teapot_1" />
 
                     <TextView android:id="@+id/tea"
                         android:layout_gravity="center_horizontal|center"
@@ -107,17 +107,15 @@
                         android:text="@string/tea_string"
                         />
 
-                    <ImageView
-                        android:id="@+id/coffee_cup_2"
-                        android:layout_width="44dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="155dp"
-                        android:layout_marginTop="109dp"
-                        android:background="@drawable/button_background_selector"
-                        android:backgroundTint="#E6B6B6"
+                    <ImageView android:id="@+id/coffee_cup_3"
+                        android:src="@drawable/coffee_cup_1"
                         android:contentDescription="coffee_cup_1"
                         android:onClick="coffeeButton"
-                        android:src="@drawable/coffee_cup_1" />
+                        android:background="@drawable/button_background_selector"
+                        android:layout_marginStart="155dp"
+                        android:layout_marginTop="109dp"
+                        android:layout_width="44dp"
+                        android:layout_height="45dp" />
 
                     <TextView android:id="@+id/coffee"
                         android:layout_gravity="center_horizontal|center"
@@ -131,15 +129,17 @@
                         android:text="@string/coffee_string"
                         />
 
-                    <ImageView android:id="@+id/cake_2"
-                        android:src="@drawable/cake_1"
-                        android:contentDescription="cake_1"
-                        android:onClick="cakeButton"
-                        android:background="@drawable/button_background_selector"
+                    <ImageView
+                        android:id="@+id/cake_3"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
                         android:layout_marginStart="262dp"
                         android:layout_marginTop="116dp"
-                        android:layout_width="43dp"
-                        android:layout_height="43dp" />
+                        android:background="@drawable/button_background_selector"
+                        android:backgroundTint="#E6B6B6"
+                        android:contentDescription="cake_1"
+                        android:onClick="cakeButton"
+                        android:src="@drawable/cake_1" />
 
                     <TextView android:id="@+id/cake"
                         android:layout_gravity="center_horizontal|center"
@@ -181,7 +181,7 @@
                             android:layout_height="23.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="0dp"
-                            android:text="@string/Cortado_1"
+                            android:text="@string/vanilla_cloud"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -191,7 +191,7 @@
                             android:layout_height="22.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="21dp"
-                            android:text="@string/milk_and_espresso"
+                            android:text="@string/vanilla_cloud_desc"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -201,13 +201,13 @@
                             android:layout_height="19.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="41dp"
-                            android:text="@string/Cortado_price"
+                            android:text="@string/vanilla_cloud_price"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
-                        <ImageView android:id="@+id/cortado"
-                            android:src="@drawable/cortado2"
-                            android:contentDescription="cortado2cup"
+                        <ImageView android:id="@+id/earl_grey__1__1"
+                            android:src="@drawable/strewberry_cloud"
+                            android:contentDescription="earl_grey__1__1"
                             android:layout_marginStart="0dp"
                             android:layout_marginTop="0dp"
                             android:layout_width="86dp"
@@ -221,12 +221,12 @@
                             android:layout_height="23dp" />
 
                         <TextView
-                            android:id="@+id/cortadoAdd"
+                            android:id="@+id/add"
                             android:layout_width="42.2dp"
                             android:layout_height="16.2dp"
                             android:layout_marginLeft="256dp"
                             android:layout_marginTop="43dp"
-                            android:text="@string/Cortado_add"
+                            android:text="@string/vanilla_cloud_add"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="12sp" />
 
@@ -260,7 +260,7 @@
                             android:layout_height="19.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="41dp"
-                            android:text="@string/iced_americano_price"
+                            android:text="@string/sticky_toffee_pudding_price"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -272,12 +272,12 @@
                             android:layout_height="23dp" />
 
                         <TextView
-                            android:id="@+id/iced_americano_add"
+                            android:id="@+id/add_ek1"
                             android:layout_width="42.2dp"
                             android:layout_height="16.2dp"
                             android:layout_marginLeft="256dp"
                             android:layout_marginTop="43dp"
-                            android:text="@string/iced_coffee_add"
+                            android:text="@string/sticky_toffee_pudding_add"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="12sp" />
 
@@ -289,7 +289,7 @@
                         android:layout_height="22.4dp"
                         android:layout_marginLeft="137dp"
                         android:layout_marginTop="596dp"
-                        android:text="@string/iced_americano_desc"
+                        android:text="@string/sticky_toffee_pudding_desc"
                         android:textColor="@color/menu_ek3_color"
                         android:textSize="14sp" />
 
@@ -299,7 +299,7 @@
                         android:layout_height="25.4dp"
                         android:layout_marginLeft="137dp"
                         android:layout_marginTop="579dp"
-                        android:text="@string/iced_americano"
+                        android:text="@string/sticky_toffee_pudding"
                         android:textColor="@color/menu_ek3_color"
                         android:textSize="14sp" />
 
@@ -331,7 +331,7 @@
                             android:layout_height="23.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="0dp"
-                            android:text="@string/iced_coffee"
+                            android:text="@string/sweet_cake"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -341,7 +341,7 @@
                             android:layout_height="19.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="41dp"
-                            android:text="@string/iced_coffee_price"
+                            android:text="@string/sweet_cake_price"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -353,12 +353,12 @@
                             android:layout_height="23dp" />
 
                         <TextView
-                            android:id="@+id/iced_coffee_add"
+                            android:id="@+id/add_ek2"
                             android:layout_width="42.2dp"
                             android:layout_height="16.2dp"
                             android:layout_marginLeft="256dp"
                             android:layout_marginTop="43dp"
-                            android:text="@string/iced_coffee_add"
+                            android:text="@string/sweet_cake_add"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="12sp" />
 
@@ -370,7 +370,7 @@
                         android:layout_height="22.4dp"
                         android:layout_marginLeft="134dp"
                         android:layout_marginTop="483dp"
-                        android:text="@string/iced_coffee_desc"
+                        android:text="@string/sweet_cake_desc"
                         android:textColor="@color/menu_ek3_color"
                         android:textSize="14sp" />
 
@@ -398,11 +398,11 @@
 
                         <TextView
                             android:id="@+id/grey_tea_ek2"
-                            android:layout_width="88.4dp"
-                            android:layout_height="23.4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="0dp"
-                            android:text="@string/Latte1"
+                            android:text="@string/strawberry_cake"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -412,7 +412,7 @@
                             android:layout_height="22.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="21dp"
-                            android:text="@string/latte_desc"
+                            android:text="@string/strawberry_cake_desc"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -422,7 +422,7 @@
                             android:layout_height="19.4dp"
                             android:layout_marginLeft="105dp"
                             android:layout_marginTop="41dp"
-                            android:text="@string/Latte_price"
+                            android:text="@string/strawberry_cake_price"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="14sp" />
 
@@ -434,40 +434,42 @@
                             android:layout_height="23dp" />
 
                         <TextView
-                            android:id="@+id/latteAdd"
+                            android:id="@+id/add_ek3"
                             android:layout_width="42.2dp"
                             android:layout_height="16.2dp"
                             android:layout_marginLeft="256dp"
                             android:layout_marginTop="43dp"
-                            android:text="@string/Latte_add"
+                            android:text="@string/strawberry_cake_add"
                             android:textColor="@color/menu_ek3_color"
                             android:textSize="12sp" />
 
                     </RelativeLayout>
 
-                    <ImageView android:id="@+id/latte"
-                        android:src="@drawable/latte2"
-                        android:contentDescription="latte_cup"
+                    <ImageView android:id="@+id/green_tea_fuze_logo_1"
+                        android:src="@drawable/green_tea_fuze_logo_1"
+                        android:contentDescription="green_tea_fuze_logo_1"
                         android:layout_marginStart="29dp"
                         android:layout_marginTop="349dp"
                         android:layout_width="86dp"
                         android:layout_height="70dp" />
 
-                    <ImageView android:id="@+id/iced_coffee_image"
-                        android:src="@drawable/iced_latte2"
+                    <ImageView android:id="@+id/english_breakfast_tea_product__1__1"
+                        android:src="@drawable/english_breakfast_tea_product__1__1"
                         android:contentDescription="english_breakfast_tea_product__1__1"
                         android:layout_marginStart="29dp"
                         android:layout_marginTop="464dp"
                         android:layout_width="86dp"
                         android:layout_height="70dp" />
 
-                    <ImageView android:id="@+id/iced_americano_image"
-                        android:src="@drawable/iced_amero"
+                    <ImageView android:id="@+id/rhubarb_apple_refresher_1"
+                        android:src="@drawable/rhubarb_apple_refresher_1"
                         android:contentDescription="rhubarb_apple_refresher_1"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="579dp"
                         android:layout_width="86dp"
                         android:layout_height="70dp" />
+
+
 
                 </RelativeLayout>
 
@@ -476,25 +478,13 @@
 
     </ScrollView>
     <Button
-        android:id="@+id/BackBtnCoffee"
+        android:id="@+id/BackBtncake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:onClick="backButtonCoffee"
+        android:onClick="backButtonCake"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_margin="16dp"/>
 
-    <Button
-        android:id="@+id/NextBtnCoffee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Next"
-        android:onClick="nextButtonCoffee"/>
 </RelativeLayout>
