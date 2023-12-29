@@ -1,28 +1,24 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
-	<!-- 
-	/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc 		
-	 *	@file 		menu
-	 *	@date 		Monday 18th of December 2023 04:25:47 PM
-	 *	@title 		Page 1
-	 *	@author 	
-	 *	@keywords 	
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-	-->
-	<ScrollView android:id="@+id/menu" 
-		android:layout_width="wrap_content" 
-		android:layout_height="match_parent" >
+<?xml version="1.0" encoding="utf-8"?>
+	<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/LLHM"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".MainActivityMenu">
 
-		<RelativeLayout android:id="@+id/content_container" 
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" >
+	<!-- Your existing layout content -->
 
+	<ScrollView
+		android:id="@+id/menu"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<RelativeLayout
+			android:id="@+id/content_container"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 
 			<RelativeLayout android:id="@+id/page_menu_ek1"
@@ -72,7 +68,8 @@
 						android:layout_height="70dp"
 						android:layout_marginStart="27dp"
 						android:layout_marginTop="108dp"
-						android:background="@drawable/rectangle_4_shape" />
+						android:background="@drawable/rectangle_4_shape"
+						android:backgroundTint="#E6B6B6" />
 
 					<View   android:id="@+id/rectangle_4"
 						android:background="@drawable/rectangle_4_shape"
@@ -89,14 +86,17 @@
 						android:layout_marginTop="108dp"
 						android:background="@drawable/rectangle_4_shape" />
 
-					<ImageView android:id="@+id/teapot_1"
-						android:src="@drawable/teapot_1"
-						android:contentDescription="teapot_1"
-						android:onClick="taeButton"
-						 android:layout_marginStart="46dp"
-						android:layout_marginTop="116dp"
+					<ImageView
+						android:id="@+id/teapot_1"
 						android:layout_width="50dp"
-						android:layout_height="38dp" />
+						android:layout_height="38dp"
+						android:layout_marginStart="46dp"
+						android:layout_marginTop="116dp"
+						android:background="@drawable/button_background_selector"
+						android:backgroundTint="#E6B6B6"
+						android:contentDescription="teapot_1"
+						android:onClick="teaButton"
+						android:src="@drawable/teapot_1" />
 
 					<TextView android:id="@+id/tea"
 						android:layout_gravity="center_horizontal|center"
@@ -113,10 +113,13 @@
 					<ImageView android:id="@+id/coffee_cup_1"
 						android:src="@drawable/coffee_cup_1"
 						android:contentDescription="coffee_cup_1"
-						 android:layout_marginStart="155dp"
+						android:onClick="coffeeButton"
+						android:background="@drawable/button_background_selector"
+						android:layout_marginStart="155dp"
 						android:layout_marginTop="109dp"
 						android:layout_width="44dp"
-						android:layout_height="45dp" />
+						android:layout_height="45dp"
+						/>
 
 					<TextView android:id="@+id/coffee"
 						android:layout_gravity="center_horizontal|center"
@@ -133,7 +136,9 @@
 					<ImageView android:id="@+id/cake_1"
 						android:src="@drawable/cake_1"
 						android:contentDescription="cake_1"
-						 android:layout_marginStart="262dp"
+						android:onClick="cakeButton"
+						android:background="@drawable/button_background_selector"
+						android:layout_marginStart="262dp"
 						android:layout_marginTop="116dp"
 						android:layout_width="43dp"
 						android:layout_height="43dp" />
@@ -472,4 +477,26 @@
 		</RelativeLayout>
 
 	</ScrollView>
-</HorizontalScrollView>
+	<Button
+		android:id="@+id/BackBtnTae"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Back"
+		android:onClick="backButtonTae"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentStart="true"
+		android:layout_margin="16dp"/>
+
+	<Button
+		android:id="@+id/NextBtnTae"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentBottom="true"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginBottom="16dp"
+		android:text="Next"
+		android:onClick="nextButtonTae"/>
+</RelativeLayout>

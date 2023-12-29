@@ -39,5 +39,29 @@
     <string name="iced_americano_price">2.45</string>
     <string name="iced_americano_add">Add</string>
 
+    <string name="vanilla_cloud">Vanilla Cloud</string>
+    <string name="vanilla_cloud_desc">Vanilla Cake</string>
+    <string name="vanilla_cloud_price">6.45</string>
+    <string name="vanilla_cloud_add">Add</string>
+
+    <string name="strawberry_cake">Strawberry Cake</string>
+    <string name="strawberry_cake_desc">Strawberry Cheesecake</string>
+    <string name="strawberry_cake_price">7.45</string>
+    <string name="strawberry_cake_add">Add</string>
+
+    <string name="sweet_cake">Sweet Cake</string>
+    <string name="sweet_cake_desc">Chocolate cake</string>
+    <string name="sweet_cake_price">7.80</string>
+    <string name="sweet_cake_add">Add</string>
+
+    <string name="sticky_toffee_pudding">Sticky Toffee Pudding</string>
+    <string name="sticky_toffee_pudding_desc">Toffee Cake</string>
+    <string name="sticky_toffee_pudding_price">7.50</string>
+    <string name="sticky_toffee_pudding_add">Add</string>
+
+    <string name="chocolate_cheesecake">Chocolate Cheesecake</string>
+    <string name="chocolate_cheesecake_desc">Toffee Cake</string>
+    <string name="chocolate_cheesecake_price">8.50</string>
+    <string name="chocolate_cheesecake_add">Add</string>
 
 </resources>

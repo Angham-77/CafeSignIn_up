@@ -5,21 +5,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivityCoffeeMenu  : AppCompatActivity(){
+class MainActivityCakeMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.coffee_menu)
+        setContentView(R.layout.cake_menu)
     }
-    fun backButtonCoffee(view: View) {
+    fun backButtonCake(view: View) {
         // Handle the "Back" button press
         finish()
     }
 
-    fun nextButtonCoffee(view: View) {
+    fun nextButtonCake(view: View) {
         // Handle the "Next" button press
-        val intent = Intent(this, MainActivityCakeMenu::class.java)
+        val intent = Intent(this, MainActivityCoffeeMenu::class.java)
         startActivity(intent)
     }
-
-
 }

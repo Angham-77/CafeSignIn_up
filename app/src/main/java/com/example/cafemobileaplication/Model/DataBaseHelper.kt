@@ -1,5 +1,6 @@
 package com.example.cafemobileaplication.Model
 
+
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -7,37 +8,56 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 
-//private val DataBaseName = "CafeAppUserDB.db"
-private val DataBaseName = "UserDB.db"
+/* Database Config*/
+private val DataBaseName = "CourseWorkDB.db"
 private val ver : Int = 1
 
 class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,null ,ver) {
-    /* Employee Table */
-    private val TableName = "User"
+    /* Customer Table */
+    private val CustomerTableName = "TCustomer"
 
-    private val Column_ID = "ID"
-    private val Column_FirstName = "FirstName "
-    private val Column_LastName =   "LastName"
-    private val Column_Age = "Age"
-    private val Column_Gender = "Gender"
-    private val Column_Address = "Address"
-    private val Column_UserName = "UserName"
-    private val Column_Password = "Password"
-    /*************************/
+    private val Customer_Column_ID = "CusId"
+    private val Customer_Column_FullName = "CusFullName"
+    private val Customer_Column_Email = "CusEmail"
+    private val Customer_Column_PhoneNo = "CusPhoneNo"
+    private val Customer_Column_UserName = "CusUserName"
+    private val Customer_Column_Password = "CusPassword"
+    private val Customer_Column_IsActive = "CusIsActive"
 
+    /* Admin Table
+    private val AdminTableName = "TAdmin"
+    private val Admin_Column_ID = "AdminId"
+    private val Admin_Column_FullName = "AdminFullName"
+    private val Admin_Column_Email = "AdminEmail"
+    private val Admin_Column_PhoneNo = "AdminPhoneNo"
+    private val Admin_Column_UserName = "AdminUserName"
+    private val Admin_Column_Password = "AdminPassword"
+    private val Admin_Column_IsActive = "AdminIsActive"*/
+
+    // Define other tables here
+    // ..............................................................................
     // This is called the first time a database is accessed
-    // Create a new database
+    // Create a new database if not exist
     override fun onCreate(db: SQLiteDatabase?) {
+
+        // Create Customer table
         try {
-            val sqlCreateStatement: String = "CREATE TABLE " + TableName + " ( " + Column_ID +
-                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_FirstName + " TEXT NOT NULL, " +
-                    Column_LastName + " TEXT NOT NULL, " + Column_Age + " INTEGER NOT NULL DEFAULT 0, " +
-                    Column_Gender + " INT NOT NULL, " + Column_Address + " TEXT, " +
-                    Column_UserName + " TEXT NOT NULL UNIQUE, " + Column_Password + " TEXT NOT NULL )"
+            var sqlCreateStatement: String = "CREATE TABLE " + CustomerTableName + "(" + Customer_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Customer_Column_FullName + " TEXT NOT NULL, " +
+                    Customer_Column_Email + " TEXT NOT NULL, " + Customer_Column_PhoneNo + " TEXT NOT NULL, "  + Customer_Column_UserName + " TEXT NOT NULL, " +
+                    Customer_Column_Password + " TEXT NOT NULL, " + Customer_Column_IsActive + " INTEGER NOT NULL )"
 
             db?.execSQL(sqlCreateStatement)
         }
         catch (e: SQLiteException) {}
+//..........................................................
+        /*Create Admin table
+        sqlCreateStatement = "CREATE TABLE $AdminTableName ( $Admin_Column_ID INTEGER PRIMARY KEY AUTOINCREMENT, $Admin_Column_FullName TEXT NOT NULL, " +
+                " $Admin_Column_Email TEXT NOT NULL, $Admin_Column_PhoneNo TEXT NOT NULL, $Admin_Column_UserName TEXT NOT NULL, " +
+                " $Admin_Column_Password TEXT NOT NULL, $Admin_Column_IsActive INTEGER NOT NULL )"
+
+        db?.execSQL(sqlCreateStatement)*/
+//..........................................................
+//     Create other tables here
     }
 
     // This is called if the database ver. is changed
@@ -52,10 +72,11 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
      * return -3 : user name is already exist
      *
      */
-    fun addUser(user: User) : Int {
+    //Chatgpt
+    fun addCustomer(customer: Customer) : Int {
 
         val db: SQLiteDatabase
-        val isUserNameAlreadyExists = checkUserName(user) // check if the username is already exist in the database
+        val isUserNameAlreadyExists = checkUserName(customer) // check if the username is already exist in the database
         if(isUserNameAlreadyExists < 0)
             return isUserNameAlreadyExists
 
@@ -68,23 +89,22 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         val cv: ContentValues = ContentValues()
 
-        cv.put(Column_FirstName, user.firstName)
-        cv.put(Column_LastName,user.LastName)
-        cv.put(Column_Age, user.age)
-        cv.put(Column_Gender, user.gender)
-        cv.put(Column_Address,user.address)
-        cv.put(Column_UserName, user.userName.lowercase())
-        cv.put(Column_Password, user.password)
+        cv.put(Customer_Column_FullName, customer.cusFullName)
+        cv.put(Customer_Column_Email, customer.cusEmail)
+        cv.put(Customer_Column_PhoneNo, customer.cusPhoneNo)
+        cv.put(Customer_Column_UserName, customer.userName.lowercase())
+        cv.put(Customer_Column_Password, customer.password)
+        cv.put(Customer_Column_IsActive, customer.isActive)
 
-        val success  =  db.insert(TableName, null, cv)
+        val success  =  db.insert(CustomerTableName, null, cv)
 
         db.close()
         if (success.toInt() == -1) return success.toInt() //Error, adding new user
         else return success.toInt() //1
-
     }
 
-    private fun checkUserName(user: User): Int {
+
+    private fun checkUserName(customer: Customer): Int {
 
         val db: SQLiteDatabase
         try {
@@ -94,9 +114,9 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             return -2
         }
 
-        val userName = user.userName.lowercase()
+        val userName = customer.userName.lowercase()
 
-        val sqlStatement = "SELECT * FROM $TableName WHERE $Column_UserName = ?"
+        val sqlStatement = "SELECT * FROM $CustomerTableName WHERE $Customer_Column_UserName = ?"
         val param = arrayOf(userName)
         val cursor: Cursor =  db.rawQuery(sqlStatement,param)
 
@@ -114,7 +134,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
     }
 
-    fun getUser(user: User) : Int {
+    fun getCustomer(customer: Customer) : Int {
 
         val db: SQLiteDatabase
         try {
@@ -124,11 +144,11 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             return -2
         }
 
-        val userName = user.userName.lowercase()
-        val userPassword = user.password
+        val userName = customer.userName.lowercase()
+        val userPassword = customer.password
         //val sqlStatement = "SELECT * FROM $TableName WHERE $Column_UserName = $userName AND $Column_Password = $userPassword"
 
-        val sqlStatement = "SELECT * FROM $TableName WHERE $Column_UserName = ? AND $Column_Password = ?"
+        val sqlStatement = "SELECT * FROM $CustomerTableName WHERE $Customer_Column_UserName = ? AND $Customer_Column_Password = ?"
         val param = arrayOf(userName,userPassword)
         val cursor: Cursor =  db.rawQuery(sqlStatement,param)
         if(cursor.moveToFirst()){
@@ -144,6 +164,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return -1 //User not found
 
     }
+
 
 }
 

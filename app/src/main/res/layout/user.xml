@@ -28,11 +28,11 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="First Name :"
+            android:text="Full Name :"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editTextFirstName"
+            android:id="@+id/editTextFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,11 +52,11 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Last Name :"
+            android:text="Email:"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editTextLastName"
+            android:id="@+id/editTextTextEmailAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,22 +71,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Age :"
-            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/editTextNumberAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -100,11 +85,11 @@
             android:layout_width="45dp"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:text="Address :"
+            android:text="Phone No:"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editTextAddress"
+            android:id="@+id/editTextPhoneNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -120,22 +105,22 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/radioGroupMF"
+            android:id="@+id/radioGroupActivity"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:checkedButton="@id/radioButtonMale">
+            android:checkedButton="@id/radioButtonActive">
 
             <RadioButton
-                android:id="@+id/radioButtonMale"
+                android:id="@+id/radioButtonActive"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="Male" />
+                android:text="Active" />
 
             <RadioButton
-                android:id="@+id/radioButtonFemale"
+                android:id="@+id/radioButtonNotActive"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="Female" />
+                android:text="Not Active" />
         </RadioGroup>
     </LinearLayout>
 

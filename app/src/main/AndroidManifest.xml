@@ -13,6 +13,10 @@
         android:theme="@style/Theme.CafeMobileAplication"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivityCakeMenu"
+            android:exported="true"
+            android:parentActivityName=".MainActivityCoffeeMenu"/>
+        <activity
             android:name=".MainActivityCoffeeMenu"
             android:exported="true"
             android:parentActivityName=".MainActivityMenu"/>
