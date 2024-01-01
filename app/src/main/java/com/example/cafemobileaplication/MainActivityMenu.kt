@@ -38,4 +38,5 @@ class MainActivityMenu : AppCompatActivity(){
         val intent = Intent(this, MainActivityCoffeeMenu::class.java)
         startActivity(intent)
     }
+
 }

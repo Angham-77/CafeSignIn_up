@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val userName = findViewById<EditText>(R.id.editTextUserName).text.toString()
         val userPassword = findViewById<EditText>(R.id.editTextPassword).text.toString()
 
+
         if(userName.isEmpty() || userPassword.isEmpty())
             Toast.makeText(this,"Please insert Username and Password",Toast.LENGTH_LONG).show()
         else {
@@ -34,8 +35,9 @@ class MainActivity : AppCompatActivity() {
                 message.text = "Error Cannot Open/Create DataBase"
             else {
                 message.text = "You logged in successfully"
-                val intent = Intent(this, MainActivityMenu::class.java)
+                val intent = Intent(this, MainActivityGoToMenu::class.java)
                 startActivity(intent)
+
             }
         }
     }
