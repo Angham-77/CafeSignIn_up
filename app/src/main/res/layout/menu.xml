@@ -47,7 +47,7 @@
 						android:background="@drawable/_bg__menu_container_shape"
 						 android:layout_marginStart="0dp"
 						android:layout_marginTop="0dp"
-						android:layout_width="370dp"
+						android:layout_width="match_parent"
 						android:layout_height="740dp" />
 
 					<TextView android:id="@+id/menu_ek3"

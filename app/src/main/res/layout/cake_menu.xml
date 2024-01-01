@@ -45,7 +45,7 @@
                         android:background="@drawable/_bg__menu_container_shape"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:layout_width="370dp"
+                        android:layout_width="match_parent"
                         android:layout_height="740dp" />
 
                     <TextView android:id="@+id/menu_ek3"
@@ -486,5 +486,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_margin="16dp"/>
-
+    <Button
+        android:id="@+id/nextBtnCale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Next"
+        android:onClick="nextButtonCake"/>
 </RelativeLayout>

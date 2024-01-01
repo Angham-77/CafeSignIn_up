@@ -5,19 +5,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivityCakeMenu : AppCompatActivity() {
+class MainActivityGoToMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.cake_menu)
+        setContentView(R.layout.go_to_menu)
     }
-    fun backButtonCake(view: View) {
-        // Handle the "Back" button press
-        finish()
-    }
-
-    fun nextButtonCake(view: View) {
+    fun goToMenu(view: View) {
         // Handle the "Next" button press
-        val intent = Intent(this, MainActivityProduct::class.java)
+        val intent = Intent(this, MainActivityMenu::class.java)
         startActivity(intent)
     }
 }

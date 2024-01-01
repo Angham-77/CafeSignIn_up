@@ -1,6 +1,7 @@
 package com.example.cafemobileaplication.Model
 
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -23,6 +24,42 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     private val Customer_Column_UserName = "CusUserName"
     private val Customer_Column_Password = "CusPassword"
     private val Customer_Column_IsActive = "CusIsActive"
+
+    /*Craete product table*/
+    private val ProductTableName ="TProduct"
+
+    private val Product_Column_ID = "ProdId"
+    private val Product_Column_Name = "ProdName"
+    private val Product_Column_Image = "ProdImage"
+    private val Product_Column_Price = "ProdPrice"
+    private val Product_Column_Available = "ProdIsAvailable"
+
+    /*Create Order Table*/
+    private val OrderTableName = "TOrder"
+
+    private val Order_Column_ID = "OrderId"
+    private val Order_Column_CusId = "CusId"
+    private val Order_Column_OrderDate = "OrderDate"
+    private val Order_Column_OrderTime = "OrderTime"
+    private val Order_Column_OrderStatus = "OrderStatus"
+
+    /*Create Table */
+
+    private val OrderDetailstableName = "TOrderDetails"
+
+    private val OrderDetails_Column_ID = "OrderDetailsId"
+    private val OrderDetails_Column_OrderId = "OrderId"
+    private val OrderDetails_Column_ProductId = "ProductId"
+
+    /*Create Payment details*/
+    private val PaymentTableName = "TPayment"
+
+    private val Payment_Column_ID = "PaymentId"
+    private val Payment_Column_OrderId = "OrderId"
+    private val Payment_Column_PaymentType = "PaymentType"
+    private val Payment_Column_Amount = "Amount"
+    private val Payment_Column_PaymentDate = "PaymentDate"
+
 
     /* Admin Table
     private val AdminTableName = "TAdmin"
@@ -57,6 +94,45 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         db?.execSQL(sqlCreateStatement)*/
 //..........................................................
+        //Create product table
+        try {
+            var sqlCreateStatement: String = "CREATE TABLE " + ProductTableName + "(" + Product_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Product_Column_Name + " TEXT NOT NULL, " +
+                    Product_Column_Image+ "BLOB" + Product_Column_Price+ " DOUBLE NOT NULL, "  + Product_Column_Available + " INTEGER NOT NULL)"
+
+            db?.execSQL(sqlCreateStatement)
+        }
+        catch (e: SQLiteException) {}
+
+        //Create order table
+        try {
+            var sqlCreateStatement: String = "CREATE TABLE " + OrderTableName + "(" + Order_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Order_Column_CusId + " INTEGER NOT NULL, " +
+                    Order_Column_OrderDate+ " TEXT NOT NULL " + Order_Column_OrderTime+ " TEXT NOT NULL, "  + Order_Column_OrderStatus + " INTEGER NOT NULL)"
+
+            db?.execSQL(sqlCreateStatement)
+        }
+        catch (e: SQLiteException) {}
+
+        //Create Order Details table
+        try {
+            var sqlCreateStatement: String = "CREATE TABLE " + OrderDetailstableName + "(" + OrderDetails_Column_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +  OrderDetails_Column_OrderId + " INTEGER NOT NULL, " +
+                    OrderDetails_Column_ProductId + " INTEGER NOT NULL)"
+
+            db?.execSQL(sqlCreateStatement)
+        }
+        catch (e: SQLiteException) {}
+
+        //Create Payment  table
+        try {
+            var sqlCreateStatement: String = "CREATE TABLE " + PaymentTableName + "(" + Payment_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Payment_Column_OrderId + " INTEGER NOT NULL, " +
+                    Payment_Column_PaymentType+ " INTEGER NOT NULL " + Payment_Column_Amount+ " REAL NOT NULL, "  + Payment_Column_PaymentDate + " TEXT NOT NULL)"
+
+            db?.execSQL(sqlCreateStatement)
+        }
+        catch (e: SQLiteException) {}
+
+
+
+
 //     Create other tables here
     }
 
@@ -164,6 +240,67 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return -1 //User not found
 
     }
+    /*fun getAllProducts(): List<Product> {
+        val productList = mutableListOf<Product>()
+        val db: SQLiteDatabase
+
+        try {
+            db = this.readableDatabase
+        } catch (e: SQLiteException) {
+            // Handle the exception as needed
+            return emptyList()
+        }
+
+        val sqlStatement = "SELECT * FROM $ProductTableName"
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        while (cursor.moveToNext()) {
+            val productId = cursor.getInt(cursor.getColumnIndex(Product_Column_ID))
+            val productName = cursor.getString(cursor.getColumnIndex(Product_Column_Name))
+            val productImage = cursor.getBlob(cursor.getColumnIndex(Product_Column_Image))
+            val productPrice = cursor.getDouble(cursor.getColumnIndex(Product_Column_Price))
+            val productAvailable = cursor.getInt(cursor.getColumnIndex(Product_Column_Available))
+
+            val product = Product(productId, productName, productImage, productPrice, productAvailable)
+            productList.add(product)
+        }
+
+        cursor.close()
+        db.close()
+
+        return productList
+    }*/
+    @SuppressLint("Range")
+    fun getAllProducts(): List<Product> {
+        val productList = mutableListOf<Product>()
+        val db: SQLiteDatabase
+
+        try {
+            db = this.readableDatabase
+        } catch (e: SQLiteException) {
+            // Handle the exception as needed
+            return emptyList()
+        }
+
+        val sqlStatement = "SELECT * FROM $ProductTableName"
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        while (cursor.moveToNext()) {
+            val productName = cursor.getString(cursor.getColumnIndex(Product_Column_Name))
+            val productImage = cursor.getBlob(cursor.getColumnIndex(Product_Column_Image))
+            val productPrice = cursor.getDouble(cursor.getColumnIndex(Product_Column_Price))
+            val productAvailable = cursor.getInt(cursor.getColumnIndex(Product_Column_Available))
+
+            val product = Product(-1,productName, productImage, productPrice, productAvailable)
+            productList.add(product)
+        }
+
+        cursor.close()
+        db.close()
+
+        return productList
+    }
+
 
 
 }
