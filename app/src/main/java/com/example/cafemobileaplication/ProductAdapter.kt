@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.cafemobileaplication.Model.Product
@@ -37,6 +38,21 @@ class ProductAdapter(context: Context, resource: Int, private val productList: L
             productImageView.setImageBitmap(bitmap)
         }
 
+       val addToOrderButton: Button = itemView.findViewById(R.id.addToCartBtn)
+        addToOrderButton.setOnClickListener {
+            // Handle the click event, e.g., add the selected product to the order table
+            val product = productList[position]
+            // Call a method to add the product to the order table
+            addToOrder(product)
+        }
         return itemView
     }
+
+    private fun addToOrder(product: Product) {
+        // Implement the logic to add the selected product to the order table
+        // You can use the DatabaseHelper to perform the database operation
+        // For example, dbHelper.addToOrder(product)
+    }
+
+
 }

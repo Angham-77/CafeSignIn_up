@@ -240,36 +240,34 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return -1 //User not found
 
     }
-    /*fun getAllProducts(): List<Product> {
-        val productList = mutableListOf<Product>()
+    /*fun addToOrder(order: Order) : Int {
+
         val db: SQLiteDatabase
-
         try {
-            db = this.readableDatabase
-        } catch (e: SQLiteException) {
-            // Handle the exception as needed
-            return emptyList()
+            db = this.writableDatabase
+        }
+        catch(e: SQLiteException) {
+            return -2
         }
 
-        val sqlStatement = "SELECT * FROM $ProductTableName"
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cv: ContentValues = ContentValues()
 
-        while (cursor.moveToNext()) {
-            val productId = cursor.getInt(cursor.getColumnIndex(Product_Column_ID))
-            val productName = cursor.getString(cursor.getColumnIndex(Product_Column_Name))
-            val productImage = cursor.getBlob(cursor.getColumnIndex(Product_Column_Image))
-            val productPrice = cursor.getDouble(cursor.getColumnIndex(Product_Column_Price))
-            val productAvailable = cursor.getInt(cursor.getColumnIndex(Product_Column_Available))
+        cv.put(Customer_Column_FullName, customer.cusFullName)
+        cv.put(Customer_Column_Email, customer.cusEmail)
+        cv.put(Customer_Column_PhoneNo, customer.cusPhoneNo)
+        cv.put(Customer_Column_UserName, customer.userName.lowercase())
+        cv.put(Customer_Column_Password, customer.password)
+        cv.put(Customer_Column_IsActive, customer.isActive)
 
-            val product = Product(productId, productName, productImage, productPrice, productAvailable)
-            productList.add(product)
-        }
+        cv.put
 
-        cursor.close()
+        val success  =  db.insert(CustomerTableName, null, cv)
+
         db.close()
-
-        return productList
+        if (success.toInt() == -1) return success.toInt() //Error, adding new user
+        else return success.toInt() //1
     }*/
+    //chatgpt
     @SuppressLint("Range")
     fun getAllProducts(): List<Product> {
         val productList = mutableListOf<Product>()
@@ -300,6 +298,66 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         return productList
     }
+    //chatgpt
+    fun addToOrder(product: Product, quantity: Int): Boolean {
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv: ContentValues = ContentValues()
+
+        cv.put(OrderDetails_Column_ProductId, product.productId)
+        cv.put(OrderDetails_Column_OrderId, getLatestOrderId())
+
+        // Insert the product into the OrderDetails table
+        val success = db.insert(OrderDetailstableName, null, cv)
+        db.close()
+
+        // Update the quantity in the Product table
+        if (success != -1L) {
+            updateProductQuantity(product.productId, quantity)
+            return true
+        }
+        return false
+    }
+
+    private fun getLatestOrderId(): Int {
+        val db: SQLiteDatabase = this.readableDatabase
+        val cursor: Cursor = db.rawQuery("SELECT MAX($Order_Column_ID) FROM $OrderTableName", null)
+
+        var latestOrderId = 0
+        if (cursor.moveToFirst()) {
+            latestOrderId = cursor.getInt(0)
+        }
+
+        cursor.close()
+        db.close()
+
+        return latestOrderId
+    }
+
+    private fun updateProductQuantity(productId: Int, quantity: Int) {
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv: ContentValues = ContentValues()
+
+        cv.put(Product_Column_Available, getAvailableQuantity(productId) - quantity)
+
+        db.update(ProductTableName, cv, "$Product_Column_ID=?", arrayOf(productId.toString()))
+        db.close()
+    }
+
+    private fun getAvailableQuantity(productId: Int): Int {
+        val db: SQLiteDatabase = this.readableDatabase
+        val cursor: Cursor = db.rawQuery("SELECT $Product_Column_Available FROM $ProductTableName WHERE $Product_Column_ID=?", arrayOf(productId.toString()))
+
+        var availableQuantity = 0
+        if (cursor.moveToFirst()) {
+            availableQuantity = cursor.getInt(0)
+        }
+
+        cursor.close()
+        db.close()
+
+        return availableQuantity
+    }
+
 
 
 

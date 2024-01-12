@@ -1,17 +1,27 @@
 package com.example.cafemobileaplication.Model
-
 import at.favre.lib.crypto.bcrypt.BCrypt
+import java.security.MessageDigest
 
 class PasswordHasher {
-        companion object {
-            private const val COST = 12 // You can adjust the cost factor based on your security requirements
-
-            fun hashPassword(plainPassword: String): String {
-                return BCrypt.withDefaults().hashToString(COST, plainPassword.toCharArray())
-            }
-
-            fun verifyPassword(plainPassword: String, hashedPassword: String): Boolean {
-                return BCrypt.verifyer().verify(plainPassword.toCharArray(), hashedPassword).verified
-            }
+    companion object {
+        fun hashPassword(plainPassword: String): String {
+            val digest = MessageDigest.getInstance("SHA-256")
+            val hashedBytes = digest.digest(plainPassword.toByteArray())
+            return bytesToHex(hashedBytes)
         }
+
+        private fun bytesToHex(bytes: ByteArray): String {
+            val hexArray = "0123456789ABCDEF".toCharArray()
+            val hexChars = CharArray(bytes.size * 2)
+            for (i in bytes.indices) {
+                val v = bytes[i].toInt() and 0xFF
+                hexChars[i * 2] = hexArray[v ushr 4]
+                hexChars[i * 2 + 1] = hexArray[v and 0x0F]
+            }
+            return String(hexChars)
+        }
+    }
 }
+
+
+
