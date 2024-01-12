@@ -50,5 +50,17 @@ dependencies {
 
     // for adding cardview
     implementation ("androidx.cardview:cardview:1.0.0")
+    //test
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("org.mockito:mockito-core:3.12.4")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation ("com.google.truth:truth:1.1.3")
+    testImplementation ("org.robolectric:robolectric:4.7.1")
+
+    // Android test dependencies
+    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation ("com.google.truth:truth:1.1.3")
+
 
 }

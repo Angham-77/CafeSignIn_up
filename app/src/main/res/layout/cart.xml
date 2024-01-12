@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/orderItemLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
-    <ListView
-        android:id="@+id/cartListView"
-        android:layout_width="match_parent"
-        android:layout_height="630dp"
-        android:background="@android:color/background_light"
-        android:clipToPadding="false"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:padding="16dp" />
+
+    <ImageView
+        android:id="@+id/deleteIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/delete" />
 
     <TextView
-        android:id="@+id/totalAmountTextView"
+        android:id="@+id/itemNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cartListView"
-        android:layout_marginTop="16dp"
-        android:text="Total Amount: $0.00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp" />
+        android:text="Item Name"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/checkoutButton"
+    <TextView
+        android:id="@+id/itemQuantityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cartListView"
-        android:layout_marginTop="16dp"
-        android:text="Checkout"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@id/itemNameTextView"
+        android:layout_marginTop="4dp"
+        android:text="Quantity: 1"
+        android:textSize="14sp" />
+
 
 </RelativeLayout>
