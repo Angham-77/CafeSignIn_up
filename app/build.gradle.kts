@@ -41,6 +41,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.navigation:navigation-fragment:2.7.6")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -51,16 +52,14 @@ dependencies {
     // for adding cardview
     implementation ("androidx.cardview:cardview:1.0.0")
     //test
-    testImplementation ("junit:junit:4.13.2")
+
     testImplementation ("org.mockito:mockito-core:3.12.4")
     testImplementation ("androidx.arch.core:core-testing:2.1.0")
     testImplementation ("com.google.truth:truth:1.1.3")
     testImplementation ("org.robolectric:robolectric:4.7.1")
+    implementation ("androidx.drawerlayout:drawerlayout:1.1.1")
 
-    // Android test dependencies
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation ("com.google.truth:truth:1.1.3")
+
 
 
 }

@@ -12,7 +12,12 @@ class MainActivityGoToMenu : AppCompatActivity() {
     }
     fun goToMenu(view: View) {
         // Handle the "Next" button press
-        val intent = Intent(this, MainActivityMenu::class.java)
+        val intent = Intent(this, MainActivityProduct::class.java)
         startActivity(intent)
+    }
+    fun goToFeedback(view: View) {
+        val intent = Intent(this, MainActivityFeedback::class.java)
+        startActivity(intent)
+        println("Feedback")
     }
 }
