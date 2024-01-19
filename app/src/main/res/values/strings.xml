@@ -64,4 +64,10 @@
     <string name="chocolate_cheesecake_price">8.50</string>
     <string name="chocolate_cheesecake_add">Add</string>
 
+    ////////
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+
 </resources>

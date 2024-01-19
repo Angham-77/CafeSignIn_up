@@ -138,6 +138,18 @@
         android:paddingBottom="16dp"
         android:layout_below="@+id/cake"/>
 
+    <Button
+        android:id="@+id/NextBtnCoffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Cart"
+        android:onClick="gotocart"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/basketFab"
@@ -145,9 +157,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:src="@drawable/purchase"
-        android:onClick="GoToCart"
-        android:contentDescription="Basket Icon"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Basket Icon"
+        android:onClick="gotocart"
+        android:src="@drawable/purchase" />
 
 </RelativeLayout>

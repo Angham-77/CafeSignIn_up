@@ -55,4 +55,5 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivityNewUser::class.java)
         startActivity(intent)
     }
+
 }

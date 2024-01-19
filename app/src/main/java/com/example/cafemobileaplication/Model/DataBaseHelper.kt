@@ -43,7 +43,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     private val Order_Column_OrderTime = "OrderTime"
     private val Order_Column_OrderStatus = "OrderStatus"
 
-    /*Create Table */
+    /*Create ORDER DETAILS Table */
 
     private val OrderDetailstableName = "TOrderDetails"
 
@@ -61,7 +61,17 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     private val Payment_Column_PaymentDate = "PaymentDate"
 
 
-    /* Admin Table
+    /*feedback table*/
+
+    private val FeedbackTableName = "TFeedback"
+
+    private val Feedback_Column_ID = "FeedbackId"
+    private val Feedback_Column_UserId = "CusId"
+    private val Feedback_Column_FeedbackContent = "FeedbackContent"
+    private val Feedback_Column_Rating = "Rating"
+
+
+    // Admin Table
     private val AdminTableName = "TAdmin"
     private val Admin_Column_ID = "AdminId"
     private val Admin_Column_FullName = "AdminFullName"
@@ -69,7 +79,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     private val Admin_Column_PhoneNo = "AdminPhoneNo"
     private val Admin_Column_UserName = "AdminUserName"
     private val Admin_Column_Password = "AdminPassword"
-    private val Admin_Column_IsActive = "AdminIsActive"*/
+    private val Admin_Column_IsActive = "AdminIsActive"
 
     // Define other tables here
     // ..............................................................................
@@ -87,12 +97,16 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         }
         catch (e: SQLiteException) {}
 //..........................................................
-        /*Create Admin table
-        sqlCreateStatement = "CREATE TABLE $AdminTableName ( $Admin_Column_ID INTEGER PRIMARY KEY AUTOINCREMENT, $Admin_Column_FullName TEXT NOT NULL, " +
-                " $Admin_Column_Email TEXT NOT NULL, $Admin_Column_PhoneNo TEXT NOT NULL, $Admin_Column_UserName TEXT NOT NULL, " +
-                " $Admin_Column_Password TEXT NOT NULL, $Admin_Column_IsActive INTEGER NOT NULL )"
+       // Create Admin table
+        try {
+           var sqlCreateStatement = "CREATE TABLE $AdminTableName ( $Admin_Column_ID INTEGER PRIMARY KEY AUTOINCREMENT, $Admin_Column_FullName TEXT NOT NULL, " +
+                    " $Admin_Column_Email TEXT NOT NULL, $Admin_Column_PhoneNo TEXT NOT NULL, $Admin_Column_UserName TEXT NOT NULL, " +
+                    " $Admin_Column_Password TEXT NOT NULL, $Admin_Column_IsActive INTEGER NOT NULL )"
+            db?.execSQL(sqlCreateStatement)
+        }
+        catch (e: SQLiteException) {}
 
-        db?.execSQL(sqlCreateStatement)*/
+
 //..........................................................
         //Create product table
         try {
@@ -106,7 +120,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         //Create order table
         try {
             var sqlCreateStatement: String = "CREATE TABLE " + OrderTableName + "(" + Order_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Order_Column_CusId + " INTEGER NOT NULL, " +
-                    Order_Column_OrderDate+ " TEXT NOT NULL " + Order_Column_OrderTime+ " TEXT NOT NULL, "  + Order_Column_OrderStatus + " INTEGER NOT NULL)"
+                    Order_Column_OrderDate+ " TEXT NOT NULL " + Order_Column_OrderTime + " TEXT NOT NULL, "  + Order_Column_OrderStatus + " INTEGER NOT NULL)"
 
             db?.execSQL(sqlCreateStatement)
         }
@@ -124,7 +138,16 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         //Create Payment  table
         try {
             var sqlCreateStatement: String = "CREATE TABLE " + PaymentTableName + "(" + Payment_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Payment_Column_OrderId + " INTEGER NOT NULL, " +
-                    Payment_Column_PaymentType+ " INTEGER NOT NULL " + Payment_Column_Amount+ " REAL NOT NULL, "  + Payment_Column_PaymentDate + " TEXT NOT NULL)"
+                    Payment_Column_PaymentType+ " INTEGER NOT NULL " + Payment_Column_Amount + " REAL NOT NULL, "  + Payment_Column_PaymentDate + " TEXT NOT NULL)"
+
+            db?.execSQL(sqlCreateStatement)
+        }
+        catch (e: SQLiteException) {}
+
+        // Create Feedback table
+        try {
+            var sqlCreateStatement: String = "CREATE TABLE " + FeedbackTableName + "(" + Feedback_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Feedback_Column_UserId + " INTEGER " +
+                    Feedback_Column_FeedbackContent + " TEXT NOT NULL," + Feedback_Column_Rating +  " REAL NOT NULL)"
 
             db?.execSQL(sqlCreateStatement)
         }
@@ -357,6 +380,28 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         return availableQuantity
     }
+   fun addFeedback(feedback: Feedback): Int {
+       val db: SQLiteDatabase
+       try {
+           db = this.writableDatabase
+       } catch (e: SQLiteException) {
+           return -2
+       }
+
+       val cv: ContentValues = ContentValues()
+
+       // Use Feedback_Column_FeedbackContent instead of FeedbackTableName
+       cv.put(Feedback_Column_FeedbackContent, feedback.feedbackText)
+       cv.put(Feedback_Column_Rating, feedback.rating)
+
+       val success = db.insert(FeedbackTableName, null, cv)
+
+       db.close()
+       if (success.toInt() == -1) return success.toInt() // Error, adding new feedback
+       else return success.toInt() // 1
+   }
+
+
 
 
 

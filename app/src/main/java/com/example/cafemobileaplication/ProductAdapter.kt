@@ -2,6 +2,7 @@ package com.example.cafemobileaplication
 
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import com.example.cafemobileaplication.Model.Product
 class ProductAdapter(context: Context, resource: Int, private val productList: List<Product>) :
     ArrayAdapter<Product>(context, resource, productList) {
 
+    private val cartItems = mutableListOf<Product>()
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val itemView = inflater.inflate(R.layout.single_item, parent, false)
@@ -24,6 +27,7 @@ class ProductAdapter(context: Context, resource: Int, private val productList: L
         val productAvailableTextView: TextView = itemView.findViewById(R.id.productAvailableTextView)
 
         val product = productList[position]
+
 
         productNameTextView.text = product.productName
         productPriceTextView.text = "Price: ${product.productPrice}"
@@ -38,20 +42,41 @@ class ProductAdapter(context: Context, resource: Int, private val productList: L
             productImageView.setImageBitmap(bitmap)
         }
 
-       val addToOrderButton: Button = itemView.findViewById(R.id.addToCartBtn)
+     /*  val addToOrderButton: Button = itemView.findViewById(R.id.addToCartBtn)
+        addToOrderButton.setOnClickListener {
+            // Handle the click event, e.g., add the selected product to the order table
+            val product = productList[position]
+            // Call a method to add the product to the order table
+            addToOrder(product)
+        }*/
+
+        val addToOrderButton: Button = itemView.findViewById(R.id.addToCartBtn)
         addToOrderButton.setOnClickListener {
             // Handle the click event, e.g., add the selected product to the order table
             val product = productList[position]
             // Call a method to add the product to the order table
             addToOrder(product)
         }
+
         return itemView
     }
 
-    private fun addToOrder(product: Product) {
+    /*private fun addToOrder(product: Product) {
         // Implement the logic to add the selected product to the order table
         // You can use the DatabaseHelper to perform the database operation
         // For example, dbHelper.addToOrder(product)
+    }*/
+
+    private fun addToOrder(product: Product) {
+        // Add the selected product to the cartItems list
+        cartItems.add(product)
+
+        // You can notify an activity or fragment about the update if needed
+        // For example, you can define an interface and call a method in the listener
+        // mListener?.onProductAddedToCart(product)
+
+        // Optionally, you can log or print something
+        Log.d("AddToOrder", "Product added to cart: $product")
     }
 
 
