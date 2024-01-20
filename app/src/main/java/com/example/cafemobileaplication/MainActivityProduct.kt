@@ -6,17 +6,21 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.Button
 import android.widget.ListView
-import android.widget.RelativeLayout
-import android.widget.Spinner
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cafemobileaplication.Model.DataBaseHelper
 import com.example.cafemobileaplication.Model.Product
+import com.example.cafemobileaplication.Model.Cart
+import com.example.cafemobileaplication.Model.Customer
+
 
 class MainActivityProduct : AppCompatActivity() {
+
+    private var addItemCount = 0
+
+    private lateinit var adapter: ProductAdapter
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,52 +29,25 @@ class MainActivityProduct : AppCompatActivity() {
         val dbHelper = DataBaseHelper(this)
         val productList = dbHelper.getAllProducts()
 
-
         val listView: ListView = findViewById(R.id.listView)
 
-        val adapter = ProductAdapter(this, R.layout.single_item, productList)
-        listView.adapter = adapter //modify this
-
+        adapter = ProductAdapter(this, R.layout.single_item, productList)
         listView.adapter = adapter
 
-    //..........................
-        // Get a reference to the Spinner in your activity
-     /*   val quantitySpinner: Spinner = findViewById(R.id.quantitySpinner)
-
-        // Define a list of quantity options (e.g., 1 to 10)
-        val quantityOptions = arrayListOf<String>()
-        for (i in 1..10) {
-            quantityOptions.add(i.toString())
+        adapter.setOnAddToCartListener { addedProduct ->
+            // Directly handle the database addition here
+            // Create a Cart object from the selected product
+            val cartItem = Cart(
+                cartId = -1,
+                0,
+                cartProductName = addedProduct.productName,
+                cartProductImage = addedProduct.productImage,
+                cartProductPrice = addedProduct.productPrice,
+                cartProductQuantity = 1
+            )
+            // Call the addToCart method in DataBaseHelper
+            dbHelper.addItemToCart(cartItem)
         }
-
-        // Create an ArrayAdapter for the Spinner
-        val qtyAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, quantityOptions)
-
-        // Specify the layout to use when the list of choices appears
-        qtyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Apply the adapter to the Spinner
-        quantitySpinner.adapter = qtyAdapter*/
-        //..............------------------------------------------------
-        // Assuming you have a list of cart items
-       /* val cartItems: List<CartItem> = // populate this list with your cart items
-
-        val cartAdapter = CartAdapter(this, R.layout.single_cart_item, cartItems)
-        val cartListView: ListView = findViewById(R.id.cartListView)
-        cartListView.adapter = cartAdapter*/
-
-    }
-    val cartItems = mutableListOf<Product>() // Assuming Product is the data model for your items
-
-    fun addToCart(product: Product) {
-        cartItems.add(product)
-        updateCartView()
-    }
-    fun GoToCart(view: View) {
-
-        val intent = Intent(this, MainActivityCart::class.java)
-        startActivity(intent)
-        println("Go to Cart")
     }
     fun gotocart(view: View) {
 
@@ -78,31 +55,36 @@ class MainActivityProduct : AppCompatActivity() {
         startActivity(intent)
         println("Go to Cart")
     }
+    //new
+    fun addToCart(view: View) {
+        Log.d("MainActivityProduct", "addToCart function called")
+        // Increment and log the count of how many times the button has been clicked
+        addItemCount++
+        Log.d("MainActivityProduct", "Add button clicked $addItemCount times")
 
-    fun updateCartView() {
-        // Assuming you have a ListView or RecyclerView for displaying the cart items
-        val cartListView: ListView = findViewById(R.id.cartlistView)
+        val dbHelper = DataBaseHelper(this)
 
-        // Create an adapter for the cart items
-        val cartAdapter = ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, cartItems)
+        // Get the selected product from the adapter
+        val selectedProduct = view.tag as Product
+        Log.d("MainActivityProduct", "Product added to cart: ${selectedProduct.productName}")
 
-        // Set the adapter to the cart ListView
-        cartListView.adapter = cartAdapter
+        // Create a Cart object from the selected product
+        val cartItem = Cart(
+            cartId = -1,
+            0,
+            cartProductName = selectedProduct.productName,
+            cartProductImage = selectedProduct.productImage,
+            cartProductPrice = selectedProduct.productPrice,
+            cartProductQuantity = 1
+        )
+
+        // Call the addItemToCart method in your database helper to add the product to the cart
+        dbHelper.addItemToCart(cartItem)
+        Log.d("MainActivityProduct", "Product added to cart: ${selectedProduct.productName}")
     }
-
-    /*fun addToOrderClick(product: Product) {
-        println("Add button")
-        Log.d("ButtonClicked", "Button clicked!")
-
-         val product2 = product.productName as Product
-        addToCart(product2)
-    }*/
-    fun addToOrderClick(product: Product) {
-        println("Add button clicked!")
-        addToCart(product)
+    fun test(view: View){
+        println("TEST test")
     }
-
-
 }
 
 

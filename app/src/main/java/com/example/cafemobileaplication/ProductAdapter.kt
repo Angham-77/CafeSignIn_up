@@ -1,5 +1,6 @@
 package com.example.cafemobileaplication
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.util.Log
@@ -15,8 +16,10 @@ import com.example.cafemobileaplication.Model.Product
 class ProductAdapter(context: Context, resource: Int, private val productList: List<Product>) :
     ArrayAdapter<Product>(context, resource, productList) {
 
-    private val cartItems = mutableListOf<Product>()
+    var addToCartListener: ((Product) -> Unit)? = null
+    //private val cartItems = mutableListOf<Product>()
 
+    @SuppressLint("MissingInflatedId")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val itemView = inflater.inflate(R.layout.single_item, parent, false)
@@ -41,43 +44,45 @@ class ProductAdapter(context: Context, resource: Int, private val productList: L
             // Set the Bitmap to the ImageView
             productImageView.setImageBitmap(bitmap)
         }
+        //NEW
 
-     /*  val addToOrderButton: Button = itemView.findViewById(R.id.addToCartBtn)
-        addToOrderButton.setOnClickListener {
-            // Handle the click event, e.g., add the selected product to the order table
-            val product = productList[position]
-            // Call a method to add the product to the order table
-            addToOrder(product)
-        }*/
+        val addToCartButton: Button = itemView.findViewById(R.id.addToCartButton)
+        addToCartButton.tag = getItem(position)  // Set the product as the tag of the button
 
-        val addToOrderButton: Button = itemView.findViewById(R.id.addToCartBtn)
-        addToOrderButton.setOnClickListener {
-            // Handle the click event, e.g., add the selected product to the order table
-            val product = productList[position]
-            // Call a method to add the product to the order table
-            addToOrder(product)
+        addToCartButton.setOnClickListener {
+            val selectedProduct = it.tag as Product  // Retrieve the product from the button's tag
+            addToCart(selectedProduct)
+
+
+            // Inside the getView method of ProductAdapter
+     /*   val addToCartButton: Button = itemView.findViewById(R.id.addToCartButton)
+        addToCartButton.tag = getItem(position)
+
+        addToCartButton.setOnClickListener {
+            // Get the position of the item in the list
+            val itemPosition = position
+
+            // Get the corresponding product
+            val selectedProduct = productList[itemPosition]
+
+            // Call a function to handle adding the product to the cart
+            addToCart(selectedProduct)*/
         }
 
         return itemView
     }
 
-    /*private fun addToOrder(product: Product) {
-        // Implement the logic to add the selected product to the order table
-        // You can use the DatabaseHelper to perform the database operation
-        // For example, dbHelper.addToOrder(product)
-    }*/
-
-    private fun addToOrder(product: Product) {
+    //NEW
+    fun addToCart(product: Product) {
         // Add the selected product to the cartItems list
-        cartItems.add(product)
+       // cartItems.add(product)
+        addToCartListener?.invoke(product)
+        notifyDataSetChanged()
 
-        // You can notify an activity or fragment about the update if needed
-        // For example, you can define an interface and call a method in the listener
-        // mListener?.onProductAddedToCart(product)
-
-        // Optionally, you can log or print something
-        Log.d("AddToOrder", "Product added to cart: $product")
     }
-
+    // Setter method for the listener
+    fun setOnAddToCartListener(listener: (Product) -> Unit) {
+        addToCartListener = listener
+    }
 
 }

@@ -9,6 +9,18 @@
     android:paddingBottom="16dp"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/yourshoppingcartTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:text="Your Shopping Cart"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
     <ListView
         android:id="@+id/cartlistView"
         android:layout_width="match_parent"
@@ -20,15 +32,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:clipToPadding="false"
-        android:paddingBottom="16dp" />
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go To Menu"
-        android:onClick="goToMenu"
-        tools:ignore="MissingConstraints" />
-
-
+        android:paddingBottom="16dp"
+        android:layout_below="@+id/yourshoppingcartTextView"/>
 
 </RelativeLayout>

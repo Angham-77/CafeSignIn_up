@@ -67,7 +67,8 @@
     ////////
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="availability">availability</string>
+    <string name="product_details">product_details</string>
 
 
 </resources>
