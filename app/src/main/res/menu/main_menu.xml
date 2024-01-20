@@ -1,0 +1,34 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.danielmalone.dansecommerce.MainActivity">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/actionHome"
+            android:orderInCategory="100"
+            android:title="Home"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/actionJeans"
+            android:orderInCategory="100"
+            android:title="Menu"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/actionShorts"
+            android:orderInCategory="100"
+            android:title="Feedback"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/action_settings4"
+            android:orderInCategory="100"
+            android:title="Logout"
+            app:showAsAction="never" />
+
+    </group>
+
+</menu>

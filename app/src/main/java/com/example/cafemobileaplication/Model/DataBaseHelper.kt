@@ -8,6 +8,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 /* Database Config*/
 private val DataBaseName = "CourseWorkDB.db"
@@ -33,6 +34,16 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     private val Product_Column_Image = "ProdImage"
     private val Product_Column_Price = "ProdPrice"
     private val Product_Column_Available = "ProdIsAvailable"
+
+    /*Craete cart table*/
+    private val CartTableName ="TCart"
+
+    private val Cart_Column_ID = "CartId"
+    private val Cart_Column_ProdID = "ProdId"
+    private val Cart_Column_Name = "ProdName"
+    private val Cart_Column_Image = "ProdImage"
+    private val Cart_Column_Price = "ProdPrice"
+    private val Cart_Column_Quantity = "ProdQuantity"
 
     /*Create Order Table*/
     private val OrderTableName = "TOrder"
@@ -112,6 +123,17 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         try {
             var sqlCreateStatement: String = "CREATE TABLE " + ProductTableName + "(" + Product_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Product_Column_Name + " TEXT NOT NULL, " +
                     Product_Column_Image+ "BLOB" + Product_Column_Price+ " DOUBLE NOT NULL, "  + Product_Column_Available + " INTEGER NOT NULL)"
+
+            db?.execSQL(sqlCreateStatement)
+        }
+        catch (e: SQLiteException) {}
+
+
+
+        //Create Cart table
+        try {
+            var sqlCreateStatement: String = "CREATE TABLE " + CartTableName + "(" + Cart_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Cart_Column_ProdID + " TEXT " +   Cart_Column_Name + " TEXT NOT NULL, " +
+                    Cart_Column_Image+ "BLOB" + Cart_Column_Price+ " DOUBLE NOT NULL, "  + Cart_Column_Quantity + " INTEGER NOT NULL)"
 
             db?.execSQL(sqlCreateStatement)
         }
@@ -321,6 +343,39 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         return productList
     }
+    @SuppressLint("Range")
+    fun getAllCartItems(): List<Cart> {
+        val cartItemList = mutableListOf<Cart>()
+        val db: SQLiteDatabase
+
+        try {
+            db = this.readableDatabase
+        } catch (e: SQLiteException) {
+            // Handle the exception as needed
+            Log.e("DataBaseHelper", "Error opening readable database: ${e.message}")
+            return emptyList()
+        }
+
+        val sqlStatement = "SELECT * FROM $CartTableName"
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        while (cursor.moveToNext()) {
+            val CartItemName = cursor.getString(cursor.getColumnIndex(Cart_Column_Name))
+            val CartItemImage = cursor.getBlob(cursor.getColumnIndex(Cart_Column_Image))
+            val CartItemPrice = cursor.getDouble(cursor.getColumnIndex(Cart_Column_Price))
+            val CartItemQuantity = cursor.getInt(cursor.getColumnIndex(Cart_Column_Quantity))
+
+            val cart = Cart(-1, 0, CartItemName,CartItemImage, CartItemPrice, CartItemQuantity )
+            cartItemList.add(cart)
+        }
+
+        cursor.close()
+        db.close()
+        Log.d("DataBaseHelper", "getAllCartItems: Successfully retrieved ${cartItemList.size} cart items.")
+
+        return cartItemList
+    }
+
     //chatgpt
     fun addToOrder(product: Product, quantity: Int): Boolean {
         val db: SQLiteDatabase = this.writableDatabase
@@ -400,10 +455,60 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
        if (success.toInt() == -1) return success.toInt() // Error, adding new feedback
        else return success.toInt() // 1
    }
+    fun addItemToCart(cart: Cart): Int {
+        val db: SQLiteDatabase
+        try {
+            db = this.writableDatabase
+        }
+        catch(e: SQLiteException) {
+            Log.e("DataBaseHelper", "Error opening writable database: ${e.message}")
+            return -2
+        }
+
+        val cv: ContentValues = ContentValues()
+
+        cv.put(Cart_Column_Name, cart.cartProductName)
+        cv.put(Cart_Column_Image, cart.cartProductImage)
+        cv.put(Cart_Column_Price, cart.cartProductPrice)
+        cv.put(Cart_Column_Quantity, cart.cartProductQuantity)
 
 
 
+        val success  =  db.insert(CartTableName, null, cv)
 
+        db.close()
+        if (success.toInt() == -1) {
+            Log.e("DataBaseHelper", "addItemToCart: Error adding cart item to database.")
+
+            return success.toInt() //Error, adding new user
+        }
+        else {
+            Log.d("DataBaseHelper", "addItemToCart: Successfully added cart item to database.")
+            return success.toInt() //1
+        }
+
+    }
+    fun deleteCartItem(cartId: Int) {
+        val db = this.writableDatabase
+        try {
+            // Delete the item from the cart table where the ID matches
+            db.delete(CartTableName, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
+        } catch (e: SQLiteException) {
+            Log.e("DataBaseHelper", "Error deleting cart item: ${e.message}")
+        } finally {
+            db.close()
+        }
+    }
+    fun clearCart() {
+        val db = writableDatabase
+        try {
+            db.delete(CartTableName, null, null)
+        } catch (e: SQLiteException) {
+            Log.e("DataBaseHelper", "Error clearing cart: ${e.message}")
+        } finally {
+            db.close()
+        }
+    }
 
 
 }
