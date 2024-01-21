@@ -14,25 +14,38 @@ import com.example.cafemobileaplication.Model.Cart
 import com.example.cafemobileaplication.Model.DataBaseHelper
 import com.example.cafemobileaplication.Model.Feedback
 
-class MainActivityCart : AppCompatActivity(), CartAdapter.OnItemDeletedListener {
+class MainActivityCart : AppCompatActivity(), CartAdapter.OnItemDeletedListener, CartAdapter.OnPriceUpdateListener {
 
     private lateinit var cartAdapter: CartAdapter
+    private lateinit var dbHelper: DataBaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cart)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val dbHelper = DataBaseHelper(this)
-     //  private val cartItemsList: List<Product> = // get your cart items here
+
+        dbHelper = DataBaseHelper(this)
         val cartItemsList = dbHelper.getAllCartItems().toMutableList()
 
-            val cartListView: ListView = findViewById(R.id.cartlistView)
+        val cartListView: ListView = findViewById(R.id.cartlistView)
+        cartAdapter = CartAdapter(this, R.layout.single_cart_item, cartItemsList, dbHelper)
+        cartListView.adapter = cartAdapter
 
-        // Create a CartAdapter and set it to the cartListView
-        val cartAdapter2 = CartAdapter(this, R.layout.single_cart_item, cartItemsList)
-        cartListView.adapter = cartAdapter2
-        cartAdapter2.onItemDeletedListener = this
+        // Set listeners for the adapter
+        cartAdapter.onItemDeletedListener = this
+        cartAdapter.onPriceUpdateListener = this
     }
+
+    override fun onPriceUpdated() {
+        recalculateTotalPrice()
+    }
+
+    private fun recalculateTotalPrice() {
+        val totalPrice = dbHelper.calculateTotalPrice()
+        val totalPriceTextView = findViewById<TextView>(R.id.totalPriceTextView)
+        totalPriceTextView.text = "Total: $${totalPrice}"
+    }
+
     override fun onItemDeleted() {
         // Handle UI update here, such as showing a Toast or refreshing the list
         Toast.makeText(this, "Item deleted", Toast.LENGTH_SHORT).show()
