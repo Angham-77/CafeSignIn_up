@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.cafemobileaplication.Model.DataBaseHelper
 import com.example.cafemobileaplication.Model.Product
 
@@ -79,6 +80,8 @@ class ProductAdapter(context: Context, resource: Int, private val productList: L
             dbHelper.updateCartItemQuantity(existingCartItem.cartId, existingCartItem.cartProductQuantity + 1)
         } else {
             addToCartListener?.invoke(product)
+            val toast = Toast.makeText(context, "Item added to cart successfully!", Toast.LENGTH_LONG)
+            toast.show()
            // notifyDataSetChanged()
         }
 
