@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cafemobileaplication.Model.DataBaseHelper
 import com.example.cafemobileaplication.Model.Product
@@ -31,8 +32,12 @@ class MainActivityProduct : AppCompatActivity() {
 
         val listView: ListView = findViewById(R.id.listView)
 
-        adapter = ProductAdapter(this, R.layout.single_item, productList)
+        // Pass the dbHelper instance to the adapter
+        adapter = ProductAdapter(this, R.layout.single_item, productList, dbHelper)
         listView.adapter = adapter
+
+
+
 
         adapter.setOnAddToCartListener { addedProduct ->
             // Directly handle the database addition here
@@ -48,6 +53,7 @@ class MainActivityProduct : AppCompatActivity() {
             // Call the addToCart method in DataBaseHelper
             dbHelper.addItemToCart(cartItem)
         }
+
     }
     fun gotocart(view: View) {
 

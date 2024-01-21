@@ -3,7 +3,6 @@ package com.example.cafemobileaplication
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.cafemobileaplication.Model.DataBaseHelper
 import com.example.cafemobileaplication.Model.Product
 
-class ProductAdapter(context: Context, resource: Int, private val productList: List<Product>) :
+class ProductAdapter(context: Context, resource: Int, private val productList: List<Product>, private val dbHelper: DataBaseHelper) :
     ArrayAdapter<Product>(context, resource, productList) {
 
     var addToCartListener: ((Product) -> Unit)? = null
@@ -74,10 +74,13 @@ class ProductAdapter(context: Context, resource: Int, private val productList: L
 
     //NEW
     fun addToCart(product: Product) {
-        // Add the selected product to the cartItems list
-       // cartItems.add(product)
-        addToCartListener?.invoke(product)
-        notifyDataSetChanged()
+        val existingCartItem = dbHelper.getCartItemByProductId(product.productId)
+        if (existingCartItem != null) {
+            dbHelper.updateCartItemQuantity(existingCartItem.cartId, existingCartItem.cartProductQuantity + 1)
+        } else {
+            addToCartListener?.invoke(product)
+           // notifyDataSetChanged()
+        }
 
     }
     // Setter method for the listener

@@ -509,6 +509,68 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             db.close()
         }
     }
+    fun updateCartItemQuantity(cartId: Int, quantity: Int) {
+        val db = writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(Cart_Column_Quantity, quantity)
+        db.update(CartTableName, contentValues, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
+        db.close()
+    }
+    @SuppressLint("Range")
+    fun getCartItemByProductId(productId: Int): Cart? {//needs modifications
+        val db = this.readableDatabase
+        var cartItem: Cart? = null
+
+        val cursor = db.query(
+            CartTableName, // Table name
+            arrayOf(Cart_Column_ID, Cart_Column_Name, Cart_Column_Image, Cart_Column_Price, Cart_Column_Quantity), // Columns to return
+            "$Cart_Column_ProdID = ?", // Selection criteria
+            arrayOf(productId.toString()), // Selection arguments
+            null, // Group by
+            null, // Having
+            null // Order by
+        )
+
+        if (cursor.moveToFirst()) {
+            val id = cursor.getInt(cursor.getColumnIndex(Cart_Column_ID))
+            val name = cursor.getString(cursor.getColumnIndex(Cart_Column_Name))
+            val image = cursor.getBlob(cursor.getColumnIndex(Cart_Column_Image))
+            val price = cursor.getDouble(cursor.getColumnIndex(Cart_Column_Price))
+            val quantity = cursor.getInt(cursor.getColumnIndex(Cart_Column_Quantity))
+
+            cartItem = Cart(id, productId, name, image, price, quantity)
+        }
+
+        cursor.close()
+        db.close()
+        return cartItem
+    }
+    @SuppressLint("Range")
+    fun calculateTotalPrice(): Double {
+        val db = this.readableDatabase
+        var totalPrice = 0.0
+
+        val cursor = db.query(
+            CartTableName, // Table name
+            arrayOf(Cart_Column_Price, Cart_Column_Quantity), // Columns: price and quantity
+            null, // Selection criteria (null for all items)
+            null, // Selection arguments
+            null, // Group by
+            null, // Having
+            null // Order by
+        )
+
+        while (cursor.moveToNext()) {
+            val price = cursor.getDouble(cursor.getColumnIndex(Cart_Column_Price))
+            val quantity = cursor.getInt(cursor.getColumnIndex(Cart_Column_Quantity))
+            totalPrice += price * quantity
+        }
+
+        cursor.close()
+        db.close()
+        return totalPrice
+    }
+
 
 
 }
