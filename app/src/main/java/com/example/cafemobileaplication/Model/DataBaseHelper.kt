@@ -39,6 +39,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     private val CartTableName ="TCart"
 
     private val Cart_Column_ID = "CartId"
+    private val Cart_Column_CusID = "CusId"
     private val Cart_Column_ProdID = "ProdId"
     private val Cart_Column_Name = "ProdName"
     private val Cart_Column_Image = "ProdImage"
@@ -131,9 +132,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
 
         //Create Cart table
+
         try {
-            var sqlCreateStatement: String = "CREATE TABLE " + CartTableName + "(" + Cart_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Cart_Column_ProdID + " TEXT " +   Cart_Column_Name + " TEXT NOT NULL, " +
-                    Cart_Column_Image+ "BLOB" + Cart_Column_Price+ " DOUBLE NOT NULL, "  + Cart_Column_Quantity + " INTEGER NOT NULL)"
+            var sqlCreateStatement: String = "CREATE TABLE " + CartTableName + "(" + Cart_Column_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  Cart_Column_CusID + " INTEGER, " +  Cart_Column_ProdID + " INTEGER, " +   Cart_Column_Name + " TEXT NOT NULL, " +
+                    Cart_Column_Image+ "BLOB," + Cart_Column_Price+ " DOUBLE NOT NULL, "  + Cart_Column_Quantity + " INTEGER NOT NULL,  " + "FOREIGN KEY(" + Cart_Column_CusID + ") REFERENCES TCustomer(CusId)," +  "FOREIGN KEY(" + Cart_Column_ProdID + ") REFERENCES TProduct(ProdId))"
 
             db?.execSQL(sqlCreateStatement)
         }
@@ -365,7 +367,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             val CartItemPrice = cursor.getDouble(cursor.getColumnIndex(Cart_Column_Price))
             val CartItemQuantity = cursor.getInt(cursor.getColumnIndex(Cart_Column_Quantity))
 
-            val cart = Cart(-1, 0, CartItemName,CartItemImage, CartItemPrice, CartItemQuantity )
+            val cart = Cart(-1, 0, 0,  CartItemName,CartItemImage, CartItemPrice, CartItemQuantity )
             cartItemList.add(cart)
         }
 
@@ -474,6 +476,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
 
 
+
         val success  =  db.insert(CartTableName, null, cv)
 
         db.close()
@@ -488,9 +491,37 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         }
 
     }
-    fun deleteCartItem(cartId: Int) {
+   /* fun deleteCartItem(cartId: Int) {
         val db = this.writableDatabase
         try {
+            val rowsDeleted = db.delete(CartTableName, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
+            Log.d("DataBaseHelper", "Rows deleted: $rowsDeleted")
+        } catch (e: SQLiteException) {
+            Log.e("DataBaseHelper", "Error deleting cart item: ${e.message}")
+        } finally {
+            db.close()
+        }
+    }*/
+   fun deleteCartItem(cartId: Int) {
+       Log.d("DataBaseHelper", "Attempting to delete cart item with ID: $cartId")
+       val db = this.writableDatabase
+       try {
+           val rowsDeleted = db.delete(CartTableName, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
+           Log.d("DataBaseHelper", "Rows deleted: $rowsDeleted")
+       } catch (e: SQLiteException) {
+           Log.e("DataBaseHelper", "Error deleting cart item: ${e.message}")
+       } finally {
+           db.close()
+       }
+   }
+
+
+/*    fun deleteCartItem(cartId: Int) {
+        Log.d("DataBaseHelper", "Attempting to delete cart item with ID: $cartId")
+        val db = this.writableDatabase
+        try {
+            val rowsDeleted = db.delete(CartTableName, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
+            Log.d("DataBaseHelper", "Rows deleted: $rowsDeleted")
             // Delete the item from the cart table where the ID matches
             db.delete(CartTableName, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
         } catch (e: SQLiteException) {
@@ -498,7 +529,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         } finally {
             db.close()
         }
-    }
+    }*/
     fun clearCart() {
         val db = writableDatabase
         try {
@@ -523,7 +554,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         val cursor = db.query(
             CartTableName, // Table name
-            arrayOf(Cart_Column_ID, Cart_Column_Name, Cart_Column_Image, Cart_Column_Price, Cart_Column_Quantity), // Columns to return
+            arrayOf(Cart_Column_ID,Cart_Column_CusID,  Cart_Column_Name, Cart_Column_Image, Cart_Column_Price, Cart_Column_Quantity), // Columns to return
             "$Cart_Column_ProdID = ?", // Selection criteria
             arrayOf(productId.toString()), // Selection arguments
             null, // Group by
@@ -533,12 +564,13 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         if (cursor.moveToFirst()) {
             val id = cursor.getInt(cursor.getColumnIndex(Cart_Column_ID))
+            val customerId = cursor.getInt(cursor.getColumnIndex(Cart_Column_CusID))
             val name = cursor.getString(cursor.getColumnIndex(Cart_Column_Name))
             val image = cursor.getBlob(cursor.getColumnIndex(Cart_Column_Image))
             val price = cursor.getDouble(cursor.getColumnIndex(Cart_Column_Price))
             val quantity = cursor.getInt(cursor.getColumnIndex(Cart_Column_Quantity))
 
-            cartItem = Cart(id, productId, name, image, price, quantity)
+            cartItem = Cart(id, customerId, productId, name, image, price, quantity)
         }
 
         cursor.close()
@@ -570,6 +602,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         db.close()
         return totalPrice
     }
+    fun getCurrentCustomerId(){
+
+    }
+
 
 
 

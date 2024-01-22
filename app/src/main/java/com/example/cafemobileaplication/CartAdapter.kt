@@ -3,6 +3,7 @@ package com.example.cafemobileaplication
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,6 +92,10 @@ class CartAdapter(context: Context, resource: Int, private val cartItems: Mutabl
 
     private fun deleteItemFromDatabase(cartItem: Cart) {
         val dbHelper = DataBaseHelper(context)
+        Log.d("CartAdapter", "Deleting cart item with ID: ${cartItem.cartId}")
         dbHelper.deleteCartItem(cartItem.cartId)
+
+        // Notify that an item has been deleted
+        onItemDeletedListener?.onItemDeleted()
     }
 }

@@ -40,11 +40,13 @@ class MainActivityProduct : AppCompatActivity() {
 
 
         adapter.setOnAddToCartListener { addedProduct ->
-            // Directly handle the database addition here
-            // Create a Cart object from the selected product
+           // val currentCustomerId = getCurrentCustomerId()
+
+            // Create a Cart object with the current customer's ID
             val cartItem = Cart(
-                cartId = -1,
-                0,
+                cartId = -1, // Auto-incremented ID
+                cartCusId = 0, // Current customer's ID
+                cartProdId = addedProduct.productId, // Product ID
                 cartProductName = addedProduct.productName,
                 cartProductImage = addedProduct.productImage,
                 cartProductPrice = addedProduct.productPrice,
@@ -77,6 +79,7 @@ class MainActivityProduct : AppCompatActivity() {
         // Create a Cart object from the selected product
         val cartItem = Cart(
             cartId = -1,
+            0,
             0,
             cartProductName = selectedProduct.productName,
             cartProductImage = selectedProduct.productImage,
