@@ -89,13 +89,13 @@ class CartAdapter(context: Context, resource: Int, private val cartItems: Mutabl
             dbHelper.updateCartItemQuantity(it.cartId, it.cartProductQuantity)
         }
     }
-
+//chatgpt
     private fun deleteItemFromDatabase(cartItem: Cart) {
         val dbHelper = DataBaseHelper(context)
         Log.d("CartAdapter", "Deleting cart item with ID: ${cartItem.cartId}")
         dbHelper.deleteCartItem(cartItem.cartId)
 
         // Notify that an item has been deleted
-        onItemDeletedListener?.onItemDeleted()
+        //onItemDeletedListener?.onItemDeleted()
     }
 }

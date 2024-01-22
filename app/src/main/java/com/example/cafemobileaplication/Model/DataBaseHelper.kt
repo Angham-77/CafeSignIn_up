@@ -287,33 +287,6 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return -1 //User not found
 
     }
-    /*fun addToOrder(order: Order) : Int {
-
-        val db: SQLiteDatabase
-        try {
-            db = this.writableDatabase
-        }
-        catch(e: SQLiteException) {
-            return -2
-        }
-
-        val cv: ContentValues = ContentValues()
-
-        cv.put(Customer_Column_FullName, customer.cusFullName)
-        cv.put(Customer_Column_Email, customer.cusEmail)
-        cv.put(Customer_Column_PhoneNo, customer.cusPhoneNo)
-        cv.put(Customer_Column_UserName, customer.userName.lowercase())
-        cv.put(Customer_Column_Password, customer.password)
-        cv.put(Customer_Column_IsActive, customer.isActive)
-
-        cv.put
-
-        val success  =  db.insert(CustomerTableName, null, cv)
-
-        db.close()
-        if (success.toInt() == -1) return success.toInt() //Error, adding new user
-        else return success.toInt() //1
-    }*/
     //chatgpt
     @SuppressLint("Range")
     fun getAllProducts(): List<Product> {
@@ -397,7 +370,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         }
         return false
     }
-
+    //chatgpt
     private fun getLatestOrderId(): Int {
         val db: SQLiteDatabase = this.readableDatabase
         val cursor: Cursor = db.rawQuery("SELECT MAX($Order_Column_ID) FROM $OrderTableName", null)
@@ -412,7 +385,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         return latestOrderId
     }
-
+    //chatgpt
     private fun updateProductQuantity(productId: Int, quantity: Int) {
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
@@ -422,6 +395,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         db.update(ProductTableName, cv, "$Product_Column_ID=?", arrayOf(productId.toString()))
         db.close()
     }
+    //chatgpt
 
     private fun getAvailableQuantity(productId: Int): Int {
         val db: SQLiteDatabase = this.readableDatabase
@@ -456,7 +430,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
        db.close()
        if (success.toInt() == -1) return success.toInt() // Error, adding new feedback
        else return success.toInt() // 1
-   }
+   }//chatgpt
     fun addItemToCart(cart: Cart): Int {
         val db: SQLiteDatabase
         try {
@@ -502,6 +476,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             db.close()
         }
     }*/
+   //chatgpt
    fun deleteCartItem(cartId: Int) {
        Log.d("DataBaseHelper", "Attempting to delete cart item with ID: $cartId")
        val db = this.writableDatabase
@@ -514,22 +489,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
            db.close()
        }
    }
-
-
-/*    fun deleteCartItem(cartId: Int) {
-        Log.d("DataBaseHelper", "Attempting to delete cart item with ID: $cartId")
-        val db = this.writableDatabase
-        try {
-            val rowsDeleted = db.delete(CartTableName, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
-            Log.d("DataBaseHelper", "Rows deleted: $rowsDeleted")
-            // Delete the item from the cart table where the ID matches
-            db.delete(CartTableName, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
-        } catch (e: SQLiteException) {
-            Log.e("DataBaseHelper", "Error deleting cart item: ${e.message}")
-        } finally {
-            db.close()
-        }
-    }*/
+    //chatgpt
     fun clearCart() {
         val db = writableDatabase
         try {
@@ -540,6 +500,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             db.close()
         }
     }
+    //chatgpt
     fun updateCartItemQuantity(cartId: Int, quantity: Int) {
         val db = writableDatabase
         val contentValues = ContentValues()
@@ -547,6 +508,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         db.update(CartTableName, contentValues, "$Cart_Column_ID = ?", arrayOf(cartId.toString()))
         db.close()
     }
+    //chatgpt
     @SuppressLint("Range")
     fun getCartItemByProductId(productId: Int): Cart? {//needs modifications
         val db = this.readableDatabase
@@ -577,6 +539,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         db.close()
         return cartItem
     }
+    //chatgpt
     @SuppressLint("Range")
     fun calculateTotalPrice(): Double {
         val db = this.readableDatabase

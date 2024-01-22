@@ -17,7 +17,7 @@ import com.example.cafemobileaplication.Model.Customer
 
 
 class MainActivityProduct : AppCompatActivity() {
-
+    //chatgpt
     private var addItemCount = 0
 
     private lateinit var adapter: ProductAdapter
