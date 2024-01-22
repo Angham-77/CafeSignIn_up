@@ -4,6 +4,7 @@ import android.util.Patterns
 import java.util.regex.Pattern
 
 class UserInputValidator {
+    //chatgpt
         fun validateNewUserInput(fullName: String, email: String, phoneNo: String, userName: String, userPassword: String): String {
             if (fullName.isEmpty()) {
                 return "Full name is required!"

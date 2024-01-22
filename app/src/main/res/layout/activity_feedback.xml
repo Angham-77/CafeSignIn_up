@@ -35,6 +35,7 @@
         android:layout_below="@id/textViewMessageFeedback"
         android:layout_marginTop="220dp"
         android:text="Submit"
+        android:backgroundTint="@color/botton"
         android:onClick="saveNewFeedbackButton"/>
 
 </RelativeLayout>

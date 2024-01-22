@@ -16,7 +16,7 @@ import com.example.cafemobileaplication.Model.Product
 
 class ProductAdapter(context: Context, resource: Int, private val productList: List<Product>, private val dbHelper: DataBaseHelper) :
     ArrayAdapter<Product>(context, resource, productList) {
-
+    //chatgpt
     var addToCartListener: ((Product) -> Unit)? = null
     //private val cartItems = mutableListOf<Product>()
 
@@ -54,20 +54,6 @@ class ProductAdapter(context: Context, resource: Int, private val productList: L
             val selectedProduct = it.tag as Product  // Retrieve the product from the button's tag
             addToCart(selectedProduct)
 
-
-            // Inside the getView method of ProductAdapter
-     /*   val addToCartButton: Button = itemView.findViewById(R.id.addToCartButton)
-        addToCartButton.tag = getItem(position)
-
-        addToCartButton.setOnClickListener {
-            // Get the position of the item in the list
-            val itemPosition = position
-
-            // Get the corresponding product
-            val selectedProduct = productList[itemPosition]
-
-            // Call a function to handle adding the product to the cart
-            addToCart(selectedProduct)*/
         }
 
         return itemView

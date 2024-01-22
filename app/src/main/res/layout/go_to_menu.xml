@@ -8,21 +8,21 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="46dp"
+        android:backgroundTint="@color/botton"
         android:onClick="goToMenu"
         android:text="Go To Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563"
-        android:backgroundTint="@color/botton"/>
+        app:layout_constraintVertical_bias="0.563" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="4dp"
         android:backgroundTint="@color/botton"
         android:onClick="goToFeedback"

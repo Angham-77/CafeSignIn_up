@@ -33,6 +33,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
@@ -48,16 +49,20 @@ dependencies {
     implementation("at.favre.lib:bcrypt:0.9.0")
     // for adding recyclerview
     implementation ("androidx.recyclerview:recyclerview:1.2.0")
-
-    // for adding cardview
     implementation ("androidx.cardview:cardview:1.0.0")
     //test
-
-    testImplementation ("org.mockito:mockito-core:3.12.4")
+    testImplementation ("org.mockito:mockito-core:5.9.0")
     testImplementation ("androidx.arch.core:core-testing:2.1.0")
     testImplementation ("com.google.truth:truth:1.1.3")
     testImplementation ("org.robolectric:robolectric:4.7.1")
     implementation ("androidx.drawerlayout:drawerlayout:1.1.1")
+    testImplementation ("org.robolectric:robolectric:4.11.1")
+    androidTestImplementation ("androidx.test:runner:1.1.0")
+    androidTestImplementation ("androidx.test:rules:1.4.1-alpha01")
+
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0-alpha03")
+    androidTestImplementation ("org.mockito:mockito-android:5.9.0") // Use the latest version for Android Instrumented Tests
+
 
 
 

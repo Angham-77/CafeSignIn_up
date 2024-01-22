@@ -26,21 +26,9 @@
         <activity
             android:name=".MainActivityProduct"
             android:exported="true"
-            android:parentActivityName=".MainActivityCakeMenu"/>
+            android:parentActivityName=".MainActivityGoToMenu"/>
         <activity
             android:name=".MainActivityGoToMenu"
-            android:exported="true"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".MainActivityCakeMenu"
-            android:exported="true"
-            android:parentActivityName=".MainActivityCoffeeMenu"/>
-        <activity
-            android:name=".MainActivityCoffeeMenu"
-            android:exported="true"
-            android:parentActivityName=".MainActivityMenu"/>
-        <activity
-            android:name=".MainActivityMenu"
             android:exported="true"
             android:parentActivityName=".MainActivity"/>
         <activity

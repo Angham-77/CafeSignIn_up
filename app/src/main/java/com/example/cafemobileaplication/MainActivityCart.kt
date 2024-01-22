@@ -15,7 +15,7 @@ import com.example.cafemobileaplication.Model.DataBaseHelper
 import com.example.cafemobileaplication.Model.Feedback
 
 class MainActivityCart : AppCompatActivity(), CartAdapter.OnItemDeletedListener, CartAdapter.OnPriceUpdateListener {
-
+    //chatgpt
     private lateinit var cartAdapter: CartAdapter
     private lateinit var dbHelper: DataBaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,15 +61,6 @@ class MainActivityCart : AppCompatActivity(), CartAdapter.OnItemDeletedListener,
 
         recalculateTotalPrice()
     }
-   /* fun onPlaceOrderClicked(view: View) {
-        val customerId = getCurrentUserId() // Implement method to get current user ID
-        if (dbHelper.placeOrder(customerId)) {
-            Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_SHORT).show()
-            // Handle post-order placement logic, like going back to the main screen
-        } else {
-            Toast.makeText(this, "Failed to place order.", Toast.LENGTH_SHORT).show()
-        }
-    }*/
     fun addToCartBtn(view: View) {
 
         val FeedbackText = findViewById<EditText>(R.id.editTextFeedback).text.toString()

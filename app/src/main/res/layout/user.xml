@@ -191,7 +191,8 @@
             android:layout_weight="1"
             android:onClick="saveNewUserButton"
             android:text="Save"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:backgroundTint="@color/botton"/>
 
     </LinearLayout>
 
